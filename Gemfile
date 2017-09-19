@@ -50,6 +50,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'annotate'
   gem 'launchy'
+  gem 'jquery-rails'
   gem 'pry-rails'
 end
 
