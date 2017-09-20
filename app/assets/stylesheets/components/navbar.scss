@@ -1,0 +1,33 @@
+$nav-height: 60px;
+$logo-font-size: 28px;
+$link-font-size: 14px;
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $nav-height;
+  // background-color: grey;
+  border-bottom: 1px solid $light-grey;
+}
+
+.left-nav {
+  font-size: $logo-font-size;
+  font-weight: 700;
+  line-height: 1.4;
+  border-right: 1px solid $light-grey;
+  padding: (($nav-height - $logo-font-size)/2) 25px;
+  color: $orange;
+}
+
+.right-nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: $link-font-size;
+  padding: 5px;
+}
+
+.right-nav a {
+  border-left: 1px solid $light-grey;
+  padding: (($nav-height - $link-font-size)/2) 28px;
+}

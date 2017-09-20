@@ -1,1 +1,10 @@
+<script type="text/javascript">
+  <% if loggedIn? %>
+    window.currentUser = <%= render(
+      "api/sessions/session_user.json.jbuilder",
+      user: current_user
+    ).html_safe %>
+  <% end %>
+</script>
+
 <main id="root"></main>

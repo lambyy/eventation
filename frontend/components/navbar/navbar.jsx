@@ -4,7 +4,9 @@ import SessionButtonsContainer from '../session/session_buttons_container';
 
 const NavBar = () => (
   <div className="main-nav">
-    <nav className="left-nav">Eventation</nav>
+    <nav className="left-nav">
+      <Link to="/">Eventation</Link>
+    </nav>
     <nav className="right-nav">
       <Link to="/events/browse">BROWSE</Link>
       <SessionButtonsContainer />

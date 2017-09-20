@@ -41,5 +41,8 @@
   "bugs": {
     "url": "https://github.com/lambyy/eventation/issues"
   },
-  "homepage": "https://github.com/lambyy/eventation#readme"
+  "homepage": "https://github.com/lambyy/eventation#readme",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.2"
+  }
 }
