@@ -15,6 +15,7 @@ class SessionForm extends React.Component {
     this.navLink = this.navLink.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.clearErrors = this.clearErrors.bind(this);
+    this.signInGuest = this.signInGuest.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -37,6 +38,12 @@ class SessionForm extends React.Component {
 
   clearErrors(e) {
     this.props.clearErrors();
+  }
+
+  signInGuest(e) {
+    e.preventDefault();
+    console.log("DEMOOOOO!");
+    this.props.signInGuest(this.props.guestUser);
   }
 
   navLink() {
@@ -97,7 +104,8 @@ class SessionForm extends React.Component {
 
           <input type="submit" value={this.navLink().action.toUpperCase()}
                 onClick={this.handleSubmit}/>
-          <button>DEMO</button>
+          <button onClick={this.signInGuest}>DEMO</button>
+          // todo: remove demo button from signup page
         </form>
     );
   }
