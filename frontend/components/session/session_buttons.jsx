@@ -6,8 +6,9 @@ const SessionButtons = (props) => {
 
   if (currentUser) {
     return (
-      <div>
-        <span>{currentUser.first_name + " " + currentUser.last_name}</span>
+      <div className="nav-user">
+        <span>{currentUser.first_name.toUpperCase() + " " + 
+          currentUser.last_name.toUpperCase()}</span>
         <Link to="/" onClick={props.logout}>LOGOUT</Link>
       </div>
     );

@@ -14,6 +14,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navLink = this.navLink.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -34,15 +35,19 @@ class SessionForm extends React.Component {
     this.props.processForm(this.state);
   }
 
+  clearErrors(e) {
+    this.props.clearErrors();
+  }
+
   navLink() {
     const { first_name, last_name } = this.state;
     let action = 'log in';
-    let link = <Link to="/signup">sign up</Link>;
+    let link = <Link to="/signup" onClick={this.clearErrors}>sign up</Link>;
     let name;
 
     if (this.props.formType === "signup") {
       action = 'sign up';
-      link =  <Link to="/login">login</Link>;
+      link =  <Link to="/login" onClick={this.clearErrors}>login</Link>;
       name = <div className="name">
         <label>
           First Name
@@ -50,7 +55,7 @@ class SessionForm extends React.Component {
           <input type="text" value={first_name}
                 onChange={this.update("first_name")}/>
         </label>
-        <br/>
+
         <label>
           Last name
           <br/>
@@ -71,29 +76,29 @@ class SessionForm extends React.Component {
     const { email, password } = this.state;
 
     return (
-      <form className="session-form">
-        <p>Let's get started</p>
-        <p>Enter your email/password to {this.navLink().action} or {this.navLink().link}</p>
-        <ul>{this.renderErrors()}</ul>
-        <label>
-          Email address
-          <br/>
-          <input type="text" value={email}
-                onChange={this.update("email")}/>
-        </label>
-        {this.navLink().name}
-        <br/>
-        <label>
-          Password
-          <br/>
-          <input type="password" value={password}
-                onChange={this.update("password")}/>
-        </label>
-        <br/>
-        <input type="submit" value={this.navLink().action.toUpperCase()}
-              onClick={this.handleSubmit}/>
-        <button>DEMO</button>
-      </form>
+        <form className="session-form">
+          <i className="fa fa-user-circle" aria-hidden="true"></i>
+          <p>Let's get started</p>
+          <p>Enter your email/password to {this.navLink().action} or {this.navLink().link}</p>
+          <ul>{this.renderErrors()}</ul>
+          <label>
+            Email address
+            <br/>
+            <input type="text" value={email}
+                  onChange={this.update("email")}/>
+          </label>
+          {this.navLink().name}
+          <label>
+            Password
+            <br/>
+            <input type="password" value={password}
+                  onChange={this.update("password")}/>
+          </label>
+
+          <input type="submit" value={this.navLink().action.toUpperCase()}
+                onClick={this.handleSubmit}/>
+          <button>DEMO</button>
+        </form>
     );
   }
 }
