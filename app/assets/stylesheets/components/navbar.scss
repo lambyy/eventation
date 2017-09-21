@@ -27,6 +27,7 @@ $link-font-size: 14px;
 }
 
 .right-nav a, span {
+  white-space: nowrap;
   border-left: 1px solid $light-grey;
   padding: (($nav-height - $link-font-size)/2) 28px;
 }
