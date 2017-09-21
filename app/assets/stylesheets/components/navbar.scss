@@ -30,3 +30,8 @@ $link-font-size: 14px;
   border-left: 1px solid $light-grey;
   padding: (($nav-height - $link-font-size)/2) 28px;
 }
+
+.right-nav a:last-child {
+  color: $blue;
+  font-weight: 600;
+}
