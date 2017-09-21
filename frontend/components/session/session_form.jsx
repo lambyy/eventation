@@ -17,6 +17,8 @@ class SessionForm extends React.Component {
     this.renderNameForm = this.renderNameForm.bind(this);
     this.renderDemoButton = this.renderDemoButton.bind(this);
     this.signInDemo = this.signInDemo.bind(this);
+    this.renderQuickDemo = this.renderQuickDemo.bind(this);
+    this.quickDemo = this.quickDemo.bind(this);
   }
 
   componentWillMount() {
@@ -29,7 +31,7 @@ class SessionForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.loggedIn) {
-      this.props.history.push('/');
+      // this.props.history.push('/');
     }
   }
 
@@ -46,6 +48,12 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
+    if (this.props.errors.length) {
+      const ul = document.querySelector("ul");
+      if (ul) {
+        ul.className += (ul.className === "errors") ? "" : "errors";
+      }
+    }
     return this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
   }
 
@@ -118,6 +126,18 @@ class SessionForm extends React.Component {
     },100);
   }
 
+  renderQuickDemo() {
+    return (
+      <button id="quick-demo" onClick={this.quickDemo}>Demo</button>
+    );
+  }
+
+  quickDemo() {
+    const inputToDisable = document.getElementById("quick-demo");
+    inputToDisable.disabled = true;
+    this.props.signInDemo({ email: "guest@example.com", password: "123456"});
+  }
+
   render() {
     const { email, password } = this.state;
     const login = this.props.formType === "login";
@@ -149,7 +169,7 @@ class SessionForm extends React.Component {
           <input className="demo-disable"
                 type="submit" value={this.navLink().buttonText}
                 onClick={this.handleSubmit}/>
-          <div>{ (login) ? this.renderDemoButton() : null }</div>
+          <div>{ (login) ? this.renderDemoButton() : this.renderQuickDemo() }</div>
         </form>
     );
   }
