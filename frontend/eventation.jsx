@@ -7,12 +7,12 @@ import { signup, login, logout } from './actions/session_actions';
 window.signup = signup;
 window.login = login;
 window.logout = logout;
-import { getEvents, getEvent, postEvent, patchEvent, deleteEvent } from './util/event_util';
-window.getEvents = getEvents;
-window.getEvent = getEvent;
-window.postEvent = postEvent;
-window.patchEvent = patchEvent;
-window.deleteEvent = deleteEvent;
+import { requestAllEvents, requestEvent, createEvent, updateEvent, removeEvent } from './actions/event_actions';
+window.requestAllEvents = requestAllEvents;
+window.requestEvent = requestEvent;
+window.createEvent = createEvent;
+window.updateEvent = updateEvent;
+window.removeEvent = removeEvent;
 
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -8,7 +8,7 @@ import {
 
 export const RECEIVE_ALL_EVENTS = "RECEIVE_ALL_EVENTS";
 export const RECEIVE_EVENT = "RECEIVE_EVENT";
-export const REMOVE_EVENT = "REMOVE_EVENT";
+export const RECEIVE_REMOVE_EVENT = "RECEIVE_REMOVE_EVENT";
 
 const receiveAllEvents = (events) => ({
   type: RECEIVE_ALL_EVENTS,
@@ -20,7 +20,32 @@ const receiveEvent = (event) => ({
   event
 });
 
-const removeEvent = (event) => ({
-  type: REMOVE_EVENT,
+const receiveRemoveEvent = (event) => ({
+  type: RECEIVE_REMOVE_EVENT,
   event
 });
+
+export const requestAllEvents = () => dispatch => (
+  getEvents()
+    .then(events => dispatch(receiveAllEvents(events)))
+);
+
+export const requestEvent = (id) => dispatch => (
+  getEvent(id)
+    .then(event => dispatch(receiveEvent(event)))
+);
+
+export const createEvent = (formEvent) => dispatch => (
+  postEvent(formEvent)
+    .then(event => dispatch(receiveEvent(event)))
+);
+
+export const updateEvent = (formEvent) => dispatch => (
+  patchEvent(formEvent)
+    .then(event => dispatch(receiveEvent(event)))
+);
+
+export const removeEvent = (id) => dispatch => (
+  deleteEvent(id)
+    .then(event => dispatch(receiveRemoveEvent(event)))
+);
