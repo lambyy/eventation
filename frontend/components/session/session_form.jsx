@@ -72,14 +72,16 @@ class SessionForm extends React.Component {
           First Name
           <br/>
           <input type="text" value={first_name}
-                onChange={this.update("first_name")}/>
+                onChange={this.update("first_name")}
+                placeholder="First name"/>
         </label>
 
         <label>
           Last name
           <br/>
           <input type="text" value={last_name}
-                onChange={this.update("last_name")}/>
+                onChange={this.update("last_name")}
+                placeholder="Last name"/>
         </label>
       </div>
     );
@@ -87,8 +89,7 @@ class SessionForm extends React.Component {
 
   renderDemoButton() {
     return (
-      <button onClick={this.signInDemo}
-              className="demo-disable">Demo</button>
+      <button className="demo-disable" onClick={this.signInDemo}>Demo</button>
     );
   }
 
@@ -130,22 +131,24 @@ class SessionForm extends React.Component {
           <label>
             Email address
             <br/>
-            <input type="text" value={email}
+            <input className="demo-disable"
+                  type="text" value={email}
                   onChange={this.update("email")}
-                  className="demo-disable"/>
+                  placeholder="Email"/>
           </label>
           { (!login) ? this.renderNameForm() : null }
           <label>
             Password
             <br/>
-            <input type="password" value={password}
+            <input className="demo-disable"
+                  type="password" value={password}
                   onChange={this.update("password")}
-                  className="demo-disable"/>
+                  placeholder="Password"/>
           </label>
 
-          <input type="submit" value={this.navLink().buttonText}
-                onClick={this.handleSubmit}
-                className="demo-disable"/>
+          <input className="demo-disable"
+                type="submit" value={this.navLink().buttonText}
+                onClick={this.handleSubmit}/>
           <div>{ (login) ? this.renderDemoButton() : null }</div>
         </form>
     );

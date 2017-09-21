@@ -74,6 +74,14 @@ $input-height: 30px;
   background: $white;
   color: $orange;
   border: 2px solid $orange;
+  cursor: pointer;
+}
+
+.session-form button[disabled], input[type="submit"][disabled] {
+  background: $orange;
+  color: $white;
+  border: none;
+  cursor: default;
 }
 
 .session-form button:focus, input[type="submit"]:focus {
