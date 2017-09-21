@@ -19,10 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
 
-  // todo: remove testing stuff
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });
+
+// todo: remove testing stuff

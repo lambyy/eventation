@@ -105,10 +105,10 @@ class SessionForm extends React.Component {
           <input type="submit" value={this.navLink().action.toUpperCase()}
                 onClick={this.handleSubmit}/>
           <button onClick={this.signInGuest}>DEMO</button>
-          // todo: remove demo button from signup page
         </form>
     );
   }
 }
 
+// todo: remove demo button from signup page
 export default SessionForm;
