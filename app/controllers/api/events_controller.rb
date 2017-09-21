@@ -19,27 +19,33 @@ class Api::EventsController < ApplicationController
     end
   end
 
-  # def update
-  #   @event = Event.find(params[:id])
-  #
-  #   if @event.update_attributes(event_params)
-  #     render :show
-  #   else
-  #     render json: @event.errors.full_messages, status: 422
-  #   end
-  #
-  # end
-  #
-  # def destroy
-  #
-  # end
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update_attributes(event_params)
+      render '/api/events/show'
+    else
+      render json: @event.errors.full_messages, status: 422
+    end
+
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+
+    if @event
+      @event.destroy
+      render '/api/events/show'
+    else
+      render json: ["Event does not exist"], status: 404
+    end
+  end
 
   private
 
   def event_params
-    params.require(:event).permit(:organizer_id, :title, :location, :start_date,
+    params.require(:event).permit(:title, :location, :start_date,
       :end_date, :image_url, :description, :category, :event_type)
   end
 
-  #todo: remove organizer_id from params
 end
