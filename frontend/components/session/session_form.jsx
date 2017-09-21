@@ -23,6 +23,10 @@ class SessionForm extends React.Component {
     this.props.clearErrors();
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.clearInterval);
+  }
+
   componentWillReceiveProps(newProps) {
     if (newProps.loggedIn) {
       this.props.history.push('/');
@@ -83,24 +87,30 @@ class SessionForm extends React.Component {
 
   renderDemoButton() {
     return (
-      <button onClick={this.signInDemo}>Demo</button>
+      <button onClick={this.signInDemo}
+              className="demo-disable">Demo</button>
     );
   }
 
   signInDemo(e) {
     e.preventDefault();
 
+    let inputsToDisable = document.getElementsByClassName("demo-disable");
+    for ( let i = 0; i < inputsToDisable.length; i++ ) {
+      inputsToDisable[i].disabled = true;
+    }
+
     let demoEmail = Array.from("guest@example.com");
     let demoPassword = Array.from("123456");
 
-    const clearInterval = setInterval(() => {
+    this.clearInterval = setInterval(() => {
       if (demoEmail.length) {
         this.setState({ email: (this.state.email + demoEmail.shift())});
       } else if (demoPassword.length) {
         this.setState({ password: (this.state.password + demoPassword.shift())});
       } else {
         this.props.signInDemo(this.state);
-        clearTimeout(clearInterval);
+        clearTimeout(this.clearInterval);
       }
 
     },100);
@@ -120,18 +130,21 @@ class SessionForm extends React.Component {
             Email address
             <br/>
             <input type="text" value={email}
-                  onChange={this.update("email")}/>
+                  onChange={this.update("email")}
+                  className="demo-disable"/>
           </label>
           { (!login) ? this.renderNameForm() : null }
           <label>
             Password
             <br/>
             <input type="password" value={password}
-                  onChange={this.update("password")}/>
+                  onChange={this.update("password")}
+                  className="demo-disable"/>
           </label>
 
           <input type="submit" value={this.navLink().buttonText}
-                onClick={this.handleSubmit}/>
+                onClick={this.handleSubmit}
+                className="demo-disable"/>
           <div>{ (login) ? this.renderDemoButton() : null }</div>
         </form>
     );
