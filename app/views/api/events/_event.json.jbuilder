@@ -1,4 +1,5 @@
-json.extract! event, :organizer_id,
+json.extract! event, :id,
+                     :organizer_id,
                      :title,
                      :location,
                      :start_date,
