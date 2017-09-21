@@ -102,6 +102,7 @@ class SessionForm extends React.Component {
 
     let demoEmail = Array.from("guest@example.com");
     let demoPassword = Array.from("123456");
+    this.setState({ email: "", password: "" });
 
     this.clearInterval = setInterval(() => {
       if (demoEmail.length) {
