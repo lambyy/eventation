@@ -12,10 +12,15 @@ class SessionForm extends React.Component {
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.navLink = this.navLink.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
-    this.clearErrors = this.clearErrors.bind(this);
-    this.signInGuest = this.signInGuest.bind(this);
+    this.navLink = this.navLink.bind(this);
+    this.renderNameForm = this.renderNameForm.bind(this);
+    this.renderDemoButton = this.renderDemoButton.bind(this);
+    this.signInDemo = this.signInDemo.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.clearErrors();
   }
 
   componentWillReceiveProps(newProps) {
@@ -36,26 +41,29 @@ class SessionForm extends React.Component {
     this.props.processForm(this.state);
   }
 
-  clearErrors(e) {
-    this.props.clearErrors();
-  }
-
-  signInGuest(e) {
-    e.preventDefault();
-    console.log("DEMOOOOO!");
-    this.props.signInGuest(this.props.guestUser);
+  renderErrors() {
+    return this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
   }
 
   navLink() {
-    const { first_name, last_name } = this.state;
-    let action = 'log in';
-    let link = <Link to="/signup" onClick={this.clearErrors}>sign up</Link>;
-    let name;
+    let action = 'Enter your email & password to log in';
+    let link = <Link to="/signup">sign up</Link>;
+    let buttonText = "Log In";
 
     if (this.props.formType === "signup") {
-      action = 'sign up';
-      link =  <Link to="/login" onClick={this.clearErrors}>login</Link>;
-      name = <div className="name">
+      action = 'Enter your information to sign up';
+      link =  <Link to="/login">login</Link>;
+      buttonText = "Sign Up";
+    }
+
+    return { action, link, buttonText };
+  }
+
+  renderNameForm() {
+    const { first_name, last_name } = this.state;
+
+    return (
+      <div className="name">
         <label>
           First Name
           <br/>
@@ -69,24 +77,44 @@ class SessionForm extends React.Component {
           <input type="text" value={last_name}
                 onChange={this.update("last_name")}/>
         </label>
-      </div>;
-    }
-
-    return { action, link, name };
+      </div>
+    );
   }
 
-  renderErrors() {
-    return this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
+  renderDemoButton() {
+    return (
+      <button onClick={this.signInDemo}>Demo</button>
+    );
+  }
+
+  signInDemo(e) {
+    e.preventDefault();
+
+    let demoEmail = Array.from("guest@example.com");
+    let demoPassword = Array.from("123456");
+
+    const clearInterval = setInterval(() => {
+      if (demoEmail.length) {
+        this.setState({ email: (this.state.email + demoEmail.shift())});
+      } else if (demoPassword.length) {
+        this.setState({ password: (this.state.password + demoPassword.shift())});
+      } else {
+        this.props.signInDemo(this.state);
+        clearTimeout(clearInterval);
+      }
+
+    },100);
   }
 
   render() {
     const { email, password } = this.state;
+    const login = this.props.formType === "login";
 
     return (
         <form className="session-form">
           <i className="fa fa-user-circle" aria-hidden="true"></i>
           <p>Let's get started</p>
-          <p>Enter your email/password to {this.navLink().action} or {this.navLink().link}</p>
+          <p>{this.navLink().action} or {this.navLink().link}</p>
           <ul>{this.renderErrors()}</ul>
           <label>
             Email address
@@ -94,7 +122,7 @@ class SessionForm extends React.Component {
             <input type="text" value={email}
                   onChange={this.update("email")}/>
           </label>
-          {this.navLink().name}
+          { (!login) ? this.renderNameForm() : null }
           <label>
             Password
             <br/>
@@ -102,13 +130,12 @@ class SessionForm extends React.Component {
                   onChange={this.update("password")}/>
           </label>
 
-          <input type="submit" value={this.navLink().action.toUpperCase()}
+          <input type="submit" value={this.navLink().buttonText}
                 onClick={this.handleSubmit}/>
-          <button onClick={this.signInGuest}>DEMO</button>
+          <div>{ (login) ? this.renderDemoButton() : null }</div>
         </form>
     );
   }
 }
 
-// todo: remove demo button from signup page
 export default SessionForm;

@@ -8,7 +8,7 @@ $input-height: 30px;
   align-items: center;
   width: 100%;
   font-weight: normal;
-  margin-top: 100px;
+  margin-top: 40px;
 }
 
 .name {
@@ -25,9 +25,12 @@ $input-height: 30px;
 }
 
 .session-form > ul {
-  width: $form-width;
   padding: 15px 0;
   list-style-type: initial;
+}
+
+.session-form li {
+  width: $form-width + 20px;
 }
 
 .session-form input, button {
@@ -54,6 +57,7 @@ $input-height: 30px;
 .fa-user-circle {
   font-size: 72px;
   color: $orange;
+  margin: 15px;
 }
 
 .session-form button, input[type="submit"] {
