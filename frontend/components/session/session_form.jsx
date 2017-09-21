@@ -29,12 +29,6 @@ class SessionForm extends React.Component {
     clearTimeout(this.clearInterval);
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.loggedIn) {
-      // this.props.history.push('/');
-    }
-  }
-
   update(type) {
     return (e) => {
       e.preventDefault();
