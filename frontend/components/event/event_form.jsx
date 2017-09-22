@@ -37,14 +37,17 @@ class EventForm extends React.Component {
         this.props.requestEvent(nextProps.eventId);
       }
       this.props.clearErrors();
+      if (nextProps.location.pathname === "/events/create") {
+        this.setState(this.defaultState());
+      }
     }
 
     if (nextProps.event) {
       this.setState(nextProps.event);
     }
 
-    if (nextProps.errors == "Event does not exist" || nextProps.location.pathname === "/events/create") {
-      this.setState(this.defaultState());
+    if (nextProps.errors == "Event does not exist") {
+
     }
   }
 
@@ -175,10 +178,10 @@ class EventForm extends React.Component {
   render() {
     return (
       <form className="event-form">
-        <p>Event Details</p>
+        <p><span>1</span>Event Details</p>
         <ul className="error-display">{this.renderEventErrors()}</ul>
         {this.renderDetailForm()}
-        <p>Create Tickets</p>
+        <p><span>2</span>Create Tickets</p>
         <br/>
         <input type="submit" value="MAKE YOUR EVENT LIVE"
             onClick={this.handleSubmit} />
