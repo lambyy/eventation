@@ -47,7 +47,7 @@ class EventForm extends React.Component {
     }
 
     if (nextProps.errors == "Event does not exist") {
-
+      this.setState(this.defaultState());
     }
   }
 
