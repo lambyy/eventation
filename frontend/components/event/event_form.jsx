@@ -14,7 +14,8 @@ class EventForm extends React.Component {
       end_date: "",
       image_url: "",
       description: "",
-      event_type: "1"
+      event_type: "1",
+      category: "1"
     };
 
     this.update = this.update.bind(this);
@@ -33,20 +34,26 @@ class EventForm extends React.Component {
 
   renderEventTypeOptions() {
     const eventTypeOptions = _eventTypes.map( (eventType, idx) => {
-      const optionText = eventType.split("&").join(" & ");
       return (
-        <option key={idx} value={eventType}>{optionText}</option>
+        <option key={idx} value={eventType}>{eventType}</option>
       );
     });
     return eventTypeOptions;
   }
 
   renderCategoryOptions() {
-
+    const categoryOptions = _categories.map( (category, idx) => {
+      const optionText = category.split("&").join(" & ");
+      return (
+        <option key={idx} value={category}>{optionText}</option>
+      );
+    });
+    return categoryOptions;
   }
 
   render() {
-    const { title, location, image_url, description, event_type } = this.state;
+    const { title, location, image_url, description,
+            event_type, category } = this.state;
 console.log(this.state);
     return (
       <form className="event-form">
@@ -103,6 +110,15 @@ console.log(this.state);
         <select defaultValue={event_type} onChange={this.update("event_type")}>
           <option value="1" disabled>Select the type of event</option>
           {this.renderEventTypeOptions()}
+        </select>
+      </label>
+      <br/>
+      <label>
+        EVENT TOPIC
+        <br/>
+        <select defaultValue={category} onChange={this.update("category")}>
+          <option value="1" disabled>Select a topic</option>
+          {this.renderCategoryOptions()}
         </select>
       </label>
       </form>
