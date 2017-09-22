@@ -1,3 +1,5 @@
+
+.+
 # == Schema Information
 #
 # Table name: events
@@ -17,12 +19,14 @@
 #
 
 CATEGORIES = %w(Music Arts Food&Drink Other)
+EVENT_TYPES = %w(Class Concert Performance Other)
 
 class Event < ApplicationRecord
   validates :organizer_id, :title, :location, presence: true
   validates :start_date, :end_date, :image_url, presence: true
   validates :description, :category, :event_type, presence: true
   validates_inclusion_of :category, in: CATEGORIES
+  validates_inclusion_of :event_type, in: EVENT_TYPES
 
   belongs_to :organizer, foreign_key: :organizer_id, class_name: :User
 end
