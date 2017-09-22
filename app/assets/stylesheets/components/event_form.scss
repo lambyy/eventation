@@ -1,0 +1,44 @@
+$event-form-side-margin: 15%;
+$event-input-width: 30%;
+
+.event-form {
+  display: flex;
+  flex-direction: column;
+
+  input, textarea, select {
+    padding: 5px;
+    margin: 7px 0;
+  }
+
+  p {
+    font-size: 24px;
+    font-weight: 600;
+    color: $grey;
+    padding: 3px 0;
+    margin: 25px $event-form-side-margin;
+    border-bottom: 3px solid $light-grey;
+  }
+
+  span {
+    color: $white;
+    background: $light-blue;
+    font-size: 34px;
+    padding: 0 15px;
+    margin: 10px 10px 10px 0;
+  }
+
+  input[type="submit"] {
+    margin: auto;
+  }
+}
+
+.detail-form {
+  // background-color: pink;
+
+  margin: 0 $event-form-side-margin;
+}
+
+.event-time {
+  display: flex;
+  flex-direction: row;
+}
