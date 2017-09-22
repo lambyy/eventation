@@ -22,6 +22,8 @@ class EventForm extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
+    this.renderEventErrors = this.renderEventErrors.bind(this);
+
     this.renderDetailForm = this.renderDetailForm.bind(this);
     this.renderEventTypeOptions = this.renderEventTypeOptions.bind(this);
     this.renderCategoryOptions = this.renderCategoryOptions.bind(this);
@@ -38,6 +40,10 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state);
+  }
+
+  renderEventErrors() {
+    return this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
   }
 
   renderDetailForm() {
@@ -135,6 +141,7 @@ class EventForm extends React.Component {
     return (
       <form className="event-form">
         <p>Event Details</p>
+        <ul className="error-display">{this.renderEventErrors()}</ul>
         {this.renderDetailForm()}
         <p>Create Tickets</p>
         <br/>
