@@ -7,17 +7,22 @@ class EventForm extends React.Component {
   constructor(props){
     super(props);
 
-    this.state = {
-      organizer_id: this.props.currentUser.id,
-      title: "",
-      location: "",
-      start_date: "",
-      end_date: "",
-      image_url: "",
-      description: "",
-      event_type: "1",
-      category: "1"
-    };
+    if (this.props.event) {
+      console.log("update event", this.props.event);
+      this.state = this.props.event;
+    } else {
+      this.state = {
+        organizer_id: this.props.currentUser.id,
+        title: "",
+        location: "",
+        start_date: "",
+        end_date: "",
+        image_url: "",
+        description: "",
+        event_type: "1",
+        category: "1"
+      };
+    }
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,6 +33,23 @@ class EventForm extends React.Component {
     this.renderEventTypeOptions = this.renderEventTypeOptions.bind(this);
     this.renderCategoryOptions = this.renderCategoryOptions.bind(this);
 
+  }
+
+  componentWillMount() {
+    if (this.props.eventId && !this.props.event) {
+      this.props.requestEvent(this.props.eventId);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.eventId !== this.props.eventId && !nextProps.event) {
+      console.log("nextProps-------------------", nextProps);
+      this.props.requestEvent(nextProps.eventId);
+    }
+
+    if (nextProps.event) {
+      this.setState(nextProps.event);
+    }
   }
 
   update(type) {

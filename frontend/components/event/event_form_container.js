@@ -1,21 +1,32 @@
 import { connect } from 'react-redux';
 import {
+  requestEvent,
   createEvent,
   updateEvent,
   removeEvent
 } from '../../actions/event_actions';
 import EventForm from './event_form';
 
-const mapStateToProps = (state) => ({
-  currentUser: state.session.currentUser,
-  errors: state.errors.event
-});
+const mapStateToProps = (state, { match }) => {
+  let event;
+  if (state.entities.events[match.params.eventId]) {
+    event = state.entities.events[match.params.eventId];
+  }
+
+  return {
+    event,
+    currentUser: state.session.currentUser,
+    errors: state.errors.event
+  };
+};
 
 const mapDispatchToProps = (dispatch, { match }) => {
   const formType = (match.params.eventId) ? "edit" : "create";
   const processForm = ( formType === "edit" ) ? updateEvent : createEvent;
   return {
+    requestEvent: (id) => dispatch(requestEvent(id)),
     processForm: (event) => dispatch(processForm(event)),
+    eventId: match.params.eventId,
     formType
   };
 };
