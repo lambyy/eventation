@@ -190,7 +190,7 @@ class SessionForm extends React.Component {
           <input className="demo-disable clickable"
                 type="submit" value={this.navLink().buttonText}
                 onClick={this.handleSubmit}/>
-          <div>{ (login) ? this.renderDemoButton() : this.renderQuickDemo() }</div>
+          { (login) ? this.renderDemoButton() : this.renderQuickDemo() }
         </form>
     );
   }
