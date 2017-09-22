@@ -10,7 +10,10 @@ import {
    let newState = merge({}, state);
    switch(action.type) {
     case RECEIVE_ALL_EVENTS:
-      return action.events;
+      action.events.forEach(event => {
+        newState[event.id] = event;
+      });
+      return newState;
     case RECEIVE_EVENT:
       newState[action.event.id] = action.event;
       return newState;
