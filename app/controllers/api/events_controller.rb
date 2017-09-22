@@ -5,8 +5,12 @@ class Api::EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    render '/api/events/show'
+    @event = Event.find_by(id: params[:id])
+    if @event
+      render '/api/events/show'
+    else
+      render json: ["Event does not exist"], status: 404
+    end
   end
 
   def create
@@ -20,18 +24,22 @@ class Api::EventsController < ApplicationController
   end
 
   def update
-    @event = Event.find(params[:id])
+    @event = Event.find_by(id: params[:id])
 
-    if @event.update_attributes(event_params)
-      render '/api/events/show'
+    if @event
+      if @event.update_attributes(event_params)
+        render '/api/events/show'
+      else
+        render json: @event.errors.full_messages, status: 422
+      end
     else
-      render json: @event.errors.full_messages, status: 422
+      render json: ["Event does not exist"], status: 404
     end
 
   end
 
   def destroy
-    @event = Event.find(params[:id])
+    @event = Event.find_by(id: params[:id])
 
     if @event
       @event.destroy
@@ -44,7 +52,7 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :location, :start_date,
+    params.require(:event).permit(:organizer_id, :title, :location, :start_date,
       :end_date, :image_url, :description, :category, :event_type)
   end
 
