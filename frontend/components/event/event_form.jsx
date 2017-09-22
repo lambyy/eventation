@@ -1,5 +1,8 @@
 import React from 'react';
 
+const _categories = "Music Arts Food&Drink Other".split(" ");
+const _eventTypes = "Class Concert Performance Other".split(" ");
+
 class EventForm extends React.Component {
   constructor(props){
     super(props);
@@ -11,10 +14,14 @@ class EventForm extends React.Component {
       end_date: "",
       image_url: "",
       description: "",
-      event_type: ""
+      event_type: "1"
     };
 
     this.update = this.update.bind(this);
+
+    this.renderEventTypeOptions = this.renderEventTypeOptions.bind(this);
+    this.renderCategoryOptions = this.renderCategoryOptions.bind(this);
+
   }
 
   update(type) {
@@ -24,8 +31,22 @@ class EventForm extends React.Component {
     };
   }
 
+  renderEventTypeOptions() {
+    const eventTypeOptions = _eventTypes.map( (eventType, idx) => {
+      const optionText = eventType.split("&").join(" & ");
+      return (
+        <option key={idx} value={eventType}>{optionText}</option>
+      );
+    });
+    return eventTypeOptions;
+  }
+
+  renderCategoryOptions() {
+
+  }
+
   render() {
-    const { title, location, image_url, description } = this.state;
+    const { title, location, image_url, description, event_type } = this.state;
 console.log(this.state);
     return (
       <form className="event-form">
@@ -79,11 +100,9 @@ console.log(this.state);
       <label>
         EVENT TYPE
         <br/>
-        <select onChange={this.update("event_type")}>
-          <option value="Music">Music</option>
-          <option value="Arts">Arts</option>
-          <option value="Food&Drink">Food & Drink</option>
-          <option value="Other">Other</option>
+        <select defaultValue={event_type} onChange={this.update("event_type")}>
+          <option value="1" disabled>Select the type of event</option>
+          {this.renderEventTypeOptions()}
         </select>
       </label>
       </form>
