@@ -32,11 +32,6 @@ $input-height: 30px;
   text-align: center;
 }
 
-.errors {
-  border: 1px solid $dark-orange;
-  padding: 15px;
-}
-
 .session-form input, button {
   margin: 5px 0;
   padding: 0 10px;
@@ -78,7 +73,6 @@ $input-height: 30px;
   background: $white;
   color: $orange;
   border: 2px solid $orange;
-  cursor: pointer;
 }
 
 .session-form button[disabled], input[type="submit"][disabled] {

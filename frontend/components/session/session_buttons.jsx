@@ -6,11 +6,11 @@ const SessionButtons = (props) => {
   const logoutRedirect = () => {
     if (props.location.pathname !== "/") {
       return (
-        <Link to="/" onClick={props.logout}>LOGOUT</Link>
+        <Link to="/" onClick={props.logout} className="clickable">LOGOUT</Link>
       );
     } else {
       return (
-        <span onClick={props.logout}>LOGOUT</span>
+        <span onClick={props.logout} className="clickable">LOGOUT</span>
       );
     }
   };
@@ -18,7 +18,7 @@ const SessionButtons = (props) => {
   if (currentUser) {
     return (
       <div className="nav-user">
-        <span>{currentUser.first_name.toUpperCase() + " " +
+        <span className="clickable">{currentUser.first_name.toUpperCase() + " " +
           currentUser.last_name.toUpperCase()}</span>
         {logoutRedirect()}
       </div>

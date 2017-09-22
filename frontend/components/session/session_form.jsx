@@ -187,7 +187,7 @@ class SessionForm extends React.Component {
                   placeholder="Password"/>
           </label>
 
-          <input className="demo-disable"
+          <input className="demo-disable clickable"
                 type="submit" value={this.navLink().buttonText}
                 onClick={this.handleSubmit}/>
           <div>{ (login) ? this.renderDemoButton() : this.renderQuickDemo() }</div>

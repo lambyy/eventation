@@ -40,6 +40,11 @@ body {
 	text-decoration: none;
 	line-height: 1;
 }
+
+button:hover, link:hover {
+	cursor: pointer;
+}
+
 ol, ul {
 	list-style: none;
 }
@@ -54,6 +59,15 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.errors {
+  border: 1px solid $dark-orange;
+  padding: 15px;
 }
 
 .clearfix:after {
