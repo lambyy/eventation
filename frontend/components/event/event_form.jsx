@@ -8,24 +8,14 @@ class EventForm extends React.Component {
     super(props);
 
     if (this.props.event) {
-      console.log("update event", this.props.event);
       this.state = this.props.event;
     } else {
-      this.state = {
-        organizer_id: this.props.currentUser.id,
-        title: "",
-        location: "",
-        start_date: "",
-        end_date: "",
-        image_url: "",
-        description: "",
-        event_type: "1",
-        category: "1"
-      };
+      this.state = this.defaultState();
     }
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.defaultState = this.defaultState.bind(this);
 
     this.renderEventErrors = this.renderEventErrors.bind(this);
 
@@ -36,20 +26,40 @@ class EventForm extends React.Component {
   }
 
   componentWillMount() {
+    // console.log("MOUNTING", this.props);
     if (this.props.eventId && !this.props.event) {
       this.props.requestEvent(this.props.eventId);
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    // console.log("------------------WILL RECEIVE PROPS----------------", nextProps);
     if (nextProps.eventId !== this.props.eventId && !nextProps.event) {
-      console.log("nextProps-------------------", nextProps);
       this.props.requestEvent(nextProps.eventId);
     }
 
     if (nextProps.event) {
       this.setState(nextProps.event);
     }
+
+    if (nextProps.errors == "Event does not exist") {
+      // console.log("bad event");
+      this.setState(this.defaultState());
+    }
+  }
+
+  defaultState() {
+    return {
+      organizer_id: this.props.currentUser.id,
+      title: "",
+      location: "",
+      start_date: "",
+      end_date: "",
+      image_url: "",
+      description: "",
+      event_type: "1",
+      category: "1"
+    };
   }
 
   update(type) {
@@ -69,8 +79,8 @@ class EventForm extends React.Component {
   }
 
   renderDetailForm() {
-    const { title, location, image_url, description,
-            event_type, category } = this.state;
+    const { title, location, image_url, description, start_date,
+            end_date, event_type, category } = this.state;
 
     return (
       <div className="detail-form">
@@ -94,7 +104,8 @@ class EventForm extends React.Component {
             <label>
               STARTS
               <br/>
-              <input type="datetime-local" onChange={this.update("start_date")}/>
+              <input type="datetime-local"
+                onChange={this.update("start_date")}/>
             </label>
             <br/>
             <label>
@@ -122,7 +133,7 @@ class EventForm extends React.Component {
         <label>
           EVENT TYPE
           <br/>
-          <select defaultValue={event_type} onChange={this.update("event_type")}>
+          <select value={event_type} onChange={this.update("event_type")}>
             <option value="1" disabled>Select the type of event</option>
             {this.renderEventTypeOptions()}
           </select>
@@ -131,7 +142,7 @@ class EventForm extends React.Component {
         <label>
           EVENT TOPIC
           <br/>
-          <select defaultValue={category} onChange={this.update("category")}>
+          <select value={category} onChange={this.update("category")}>
             <option value="1" disabled>Select a topic</option>
             {this.renderCategoryOptions()}
           </select>
