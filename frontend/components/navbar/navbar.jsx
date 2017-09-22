@@ -10,7 +10,7 @@ const NavBar = () => (
     <nav className="right-nav">
       <Link to="/events/browse">BROWSE</Link>
       <SessionButtonsContainer />
-      <Link to="/events/new">CREATE</Link>
+      <Link to="/events/create">CREATE</Link>
     </nav>
   </div>
 );
