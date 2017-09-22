@@ -8,6 +8,7 @@ class EventForm extends React.Component {
     super(props);
 
     this.state = {
+      organizer_id: this.props.currentUser.id,
       title: "",
       location: "",
       start_date: "",
@@ -19,7 +20,9 @@ class EventForm extends React.Component {
     };
 
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
+    this.renderDetailForm = this.renderDetailForm.bind(this);
     this.renderEventTypeOptions = this.renderEventTypeOptions.bind(this);
     this.renderCategoryOptions = this.renderCategoryOptions.bind(this);
 
@@ -30,6 +33,83 @@ class EventForm extends React.Component {
       e.preventDefault();
       this.setState({ [type]: e.target.value });
     };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.processForm(this.state);
+  }
+
+  renderDetailForm() {
+    const { title, location, image_url, description,
+            event_type, category } = this.state;
+
+    return (
+      <div className="detail-form">
+        <label>
+          EVENT TITLE
+          <br/>
+          <input type="text" value={title}
+              onChange={this.update("title")}
+              placeholder="Give it a short distinct name"/>
+        </label>
+        <br/>
+        <label>
+          LOCATION
+          <br/>
+          <input type="text" value={location}
+              onChange={this.update("location")}
+              placeholder="Specify where event will be"/>
+        </label>
+
+          <div className="event-time">
+            <label>
+              STARTS
+              <br/>
+              <input type="datetime-local" onChange={this.update("start_date")}/>
+            </label>
+            <br/>
+            <label>
+              ENDS
+              <br/>
+              <input type="datetime-local" onChange={this.update("end_date")}/>
+            </label>
+          </div>
+
+        <label>
+          EVENT IMAGE
+          <br/>
+          <input type="text" value={image_url}
+              onChange={this.update("image_url")}
+              placeholder="Choose an image that brings your event to life"/>
+        </label>
+        <br/>
+        <label>
+          EVENT DESCRIPTION
+          <br/>
+          <textarea value={description}
+              onChange={this.update("description")}></textarea>
+        </label>
+        <br/>
+        <label>
+          EVENT TYPE
+          <br/>
+          <select defaultValue={event_type} onChange={this.update("event_type")}>
+            <option value="1" disabled>Select the type of event</option>
+            {this.renderEventTypeOptions()}
+          </select>
+        </label>
+        <br/>
+        <label>
+          EVENT TOPIC
+          <br/>
+          <select defaultValue={category} onChange={this.update("category")}>
+            <option value="1" disabled>Select a topic</option>
+            {this.renderCategoryOptions()}
+          </select>
+        </label>
+      </div>
+    );
   }
 
   renderEventTypeOptions() {
@@ -52,75 +132,14 @@ class EventForm extends React.Component {
   }
 
   render() {
-    const { title, location, image_url, description,
-            event_type, category } = this.state;
-console.log(this.state);
     return (
       <form className="event-form">
         <p>Event Details</p>
-
-      <label>
-        EVENT TITLE
+        {this.renderDetailForm()}
+        <p>Create Tickets</p>
         <br/>
-        <input type="text" value={title}
-            onChange={this.update("title")}
-            placeholder="Give it a short distinct name"/>
-      </label>
-      <br/>
-      <label>
-        LOCATION
-        <br/>
-        <input type="text" value={location}
-            onChange={this.update("location")}
-            placeholder="Specify where event will be"/>
-      </label>
-
-      <div className="event-time">
-        <label>
-          STARTS
-          <br/>
-          <input type="datetime-local" onChange={this.update("start_date")}/>
-        </label>
-        <br/>
-        <label>
-          ENDS
-          <br/>
-          <input type="datetime-local" onChange={this.update("end_date")}/>
-        </label>
-      </div>
-
-      <label>
-        EVENT IMAGE
-        <br/>
-        <input type="text" value={image_url}
-            onChange={this.update("image_url")}
-            placeholder="Choose an image that brings your event to life"/>
-      </label>
-      <br/>
-      <label>
-        EVENT DESCRIPTION
-        <br/>
-        <textarea value={description}
-            onChange={this.update("description")}></textarea>
-      </label>
-      <br/>
-      <label>
-        EVENT TYPE
-        <br/>
-        <select defaultValue={event_type} onChange={this.update("event_type")}>
-          <option value="1" disabled>Select the type of event</option>
-          {this.renderEventTypeOptions()}
-        </select>
-      </label>
-      <br/>
-      <label>
-        EVENT TOPIC
-        <br/>
-        <select defaultValue={category} onChange={this.update("category")}>
-          <option value="1" disabled>Select a topic</option>
-          {this.renderCategoryOptions()}
-        </select>
-      </label>
+        <input type="submit" value="MAKE YOUR EVENT LIVE"
+            onClick={this.handleSubmit} />
       </form>
     );
   }
