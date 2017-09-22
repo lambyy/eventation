@@ -5,6 +5,7 @@ import {
   updateEvent,
   removeEvent
 } from '../../actions/event_actions';
+import { clearErrors } from '../../actions/error_actions';
 import EventForm from './event_form';
 
 const mapStateToProps = (state, { match }) => {
@@ -24,6 +25,7 @@ const mapDispatchToProps = (dispatch, { match }) => {
   const formType = (match.params.eventId) ? "edit" : "create";
   const processForm = ( formType === "edit" ) ? updateEvent : createEvent;
   return {
+    clearErrors: () => dispatch(clearErrors()),
     requestEvent: (id) => dispatch(requestEvent(id)),
     processForm: (event) => dispatch(processForm(event)),
     eventId: match.params.eventId,

@@ -32,15 +32,18 @@ class EventForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.eventId !== this.props.eventId && !nextProps.event) {
-      this.props.requestEvent(nextProps.eventId);
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      if (!nextProps.event && nextProps.eventId) {
+        this.props.requestEvent(nextProps.eventId);
+      }
+      this.props.clearErrors();
     }
 
     if (nextProps.event) {
       this.setState(nextProps.event);
     }
 
-    if (nextProps.errors == "Event does not exist") {
+    if (nextProps.errors == "Event does not exist" || nextProps.location.pathname === "/events/create") {
       this.setState(this.defaultState());
     }
   }
@@ -68,7 +71,8 @@ class EventForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state);
+    this.props.processForm(this.state)
+      .then(action => this.props.history.push(`/events/${action.event.id}`));
   }
 
   renderEventErrors() {
