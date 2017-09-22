@@ -26,14 +26,12 @@ class EventForm extends React.Component {
   }
 
   componentWillMount() {
-    // console.log("MOUNTING", this.props);
     if (this.props.eventId && !this.props.event) {
       this.props.requestEvent(this.props.eventId);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log("------------------WILL RECEIVE PROPS----------------", nextProps);
     if (nextProps.eventId !== this.props.eventId && !nextProps.event) {
       this.props.requestEvent(nextProps.eventId);
     }
@@ -43,7 +41,6 @@ class EventForm extends React.Component {
     }
 
     if (nextProps.errors == "Event does not exist") {
-      // console.log("bad event");
       this.setState(this.defaultState());
     }
   }
@@ -104,14 +101,15 @@ class EventForm extends React.Component {
             <label>
               STARTS
               <br/>
-              <input type="datetime-local"
+              <input type="datetime-local" value={start_date.slice(0, 16)}
                 onChange={this.update("start_date")}/>
             </label>
             <br/>
             <label>
               ENDS
               <br/>
-              <input type="datetime-local" onChange={this.update("end_date")}/>
+              <input type="datetime-local" value={end_date.slice(0, 16)}
+                onChange={this.update("end_date")}/>
             </label>
           </div>
 
