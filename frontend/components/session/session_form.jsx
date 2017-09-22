@@ -10,23 +10,60 @@ class SessionForm extends React.Component {
       first_name: "",
       last_name: ""};
 
+    this.reset = this.reset.bind(this);
+    this.toggleDisable = this.toggleDisable.bind(this);
+    this.toggleErrorClass = this.toggleErrorClass.bind(this);
+
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.navLink = this.navLink.bind(this);
     this.renderNameForm = this.renderNameForm.bind(this);
+
     this.renderDemoButton = this.renderDemoButton.bind(this);
     this.signInDemo = this.signInDemo.bind(this);
     this.renderQuickDemo = this.renderQuickDemo.bind(this);
     this.quickDemo = this.quickDemo.bind(this);
   }
 
-  componentWillMount() {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.reset();
+    }
+
+    if (nextProps.errors.length) {
+      this.toggleErrorClass(false);
+    } else {
+      this.toggleErrorClass(true);
+    }
+  }
+
+  reset() {
+    clearTimeout(this.clearInterval);
     this.props.clearErrors();
+    this.toggleDisable(false);
+    this.setState({ email: "", password: "", first_name: "", last_name: ""});
+  }
+
+  toggleDisable(disable) {
+    let inputsToDisable = document.getElementsByClassName("demo-disable");
+    for ( let i = 0; i < inputsToDisable.length; i++ ) {
+      inputsToDisable[i].disabled = disable;
+    }
+  }
+
+  toggleErrorClass(disable) {
+    let ul = document.getElementById("error-display");
+    if (disable && ul) {
+      ul.className = "";
+    } else {
+      ul.className = "errors";
+    }
   }
 
   componentWillUnmount() {
-    clearTimeout(this.clearInterval);
+    console.log("Unmounting");
+    this.reset();
   }
 
   update(type) {
@@ -42,12 +79,6 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    if (this.props.errors.length) {
-      const ul = document.querySelector("ul");
-      if (ul) {
-        ul.className += (ul.className === "errors") ? "" : "errors";
-      }
-    }
     return this.props.errors.map((error, idx) => <li key={idx}>{error}</li>);
   }
 
@@ -98,10 +129,7 @@ class SessionForm extends React.Component {
   signInDemo(e) {
     e.preventDefault();
 
-    let inputsToDisable = document.getElementsByClassName("demo-disable");
-    for ( let i = 0; i < inputsToDisable.length; i++ ) {
-      inputsToDisable[i].disabled = true;
-    }
+    this.toggleDisable(true);
 
     let demoEmail = Array.from("guest@example.com");
     let demoPassword = Array.from("123456");
@@ -116,7 +144,6 @@ class SessionForm extends React.Component {
         this.props.signInDemo(this.state);
         clearTimeout(this.clearInterval);
       }
-
     },100);
   }
 
@@ -141,7 +168,7 @@ class SessionForm extends React.Component {
           <i className="fa fa-user-circle" aria-hidden="true"></i>
           <p>Let's get started</p>
           <p>{this.navLink().action} or {this.navLink().link}</p>
-          <ul>{this.renderErrors()}</ul>
+          <ul id="error-display">{this.renderErrors()}</ul>
           <label>
             Email address
             <br/>
