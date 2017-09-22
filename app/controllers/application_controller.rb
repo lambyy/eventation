@@ -22,7 +22,9 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  # def require_signin
-  #   unless loggedIn? redirect_to
-  # end
+  def require_signin
+    unless loggedIn?
+      render json: ["Must be logged in"], status: 422
+    end
+  end
 end

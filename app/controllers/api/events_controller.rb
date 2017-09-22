@@ -1,4 +1,7 @@
 class Api::EventsController < ApplicationController
+  before_action :require_signin, only: [:create, :update, :destroy]
+  before_action :require_owner, only: [:update, :destroy]
+
   def index
     @events = Event.all
     render '/api/events/index'
@@ -54,6 +57,13 @@ class Api::EventsController < ApplicationController
   def event_params
     params.require(:event).permit(:organizer_id, :title, :location, :start_date,
       :end_date, :image_url, :description, :category, :event_type)
+  end
+
+  def require_owner
+    @event = Event.find_by(id: params[:id])
+    unless @event && (@event.organizer_id == current_user.id)
+      render json: ["You are not the event organizer"], status: 422
+    end
   end
 
 end
