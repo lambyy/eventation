@@ -75,7 +75,8 @@ class EventForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state)
-      .then(action => this.props.history.push(`/events/${action.event.id}`));
+      .then(action => this.props.history.push(`/events/${action.event.id}`))
+      .fail(() => setTimeout(() => scroll(0,0), 500));
   }
 
   renderEventErrors() {

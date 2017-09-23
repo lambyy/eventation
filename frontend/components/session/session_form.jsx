@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
@@ -8,7 +9,12 @@ class SessionForm extends React.Component {
       email: "",
       password: "",
       first_name: "",
-      last_name: ""};
+      last_name: "",
+      // modalIsOpen: true
+    };
+
+    // this.openModal = this.openModal.bind(this);
+    // this.closeModal = this.closeModal.bind(this);
 
     this.reset = this.reset.bind(this);
     this.toggleDisable = this.toggleDisable.bind(this);
@@ -65,6 +71,15 @@ class SessionForm extends React.Component {
     console.log("Unmounting");
     this.reset();
   }
+
+  // openModal() {
+  //   this.setState({ modalIsOpen: true });
+  // }
+  //
+  // closeModal() {
+  //   this.setState({ modalIsOpen: false });
+  //   this.props.history.push("/");
+  // }
 
   update(type) {
     return (e) => {
@@ -162,10 +177,17 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const { email, password } = this.state;
+    const { email, password, modalIsOpen } = this.state;
     const login = this.props.formType === "login";
 
     return (
+      // <Modal
+      //   isOpen={modalIsOpen}
+      //   onRequestClose={this.closeModal}
+      //   contentLabel="Login/Signup"
+      // >
+        // <span className="fa fa-times-circle-o" aria-hidden="true"
+        //   onClick={this.closeModal}></span>
         <form className="session-form">
           <i className="fa fa-user-circle" aria-hidden="true"></i>
           <p>Let's get started</p>
@@ -194,6 +216,7 @@ class SessionForm extends React.Component {
                 onClick={this.handleSubmit}/>
           { (login) ? this.renderDemoButton() : this.renderQuickDemo() }
         </form>
+      // </Modal>
     );
   }
 }
