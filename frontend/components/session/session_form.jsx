@@ -122,7 +122,8 @@ class SessionForm extends React.Component {
 
   renderDemoButton() {
     return (
-      <button className="demo-disable" onClick={this.signInDemo}>Demo</button>
+      <button className="demo-disable orange-button"
+         onClick={this.signInDemo}>Demo</button>
     );
   }
 
@@ -149,7 +150,8 @@ class SessionForm extends React.Component {
 
   renderQuickDemo() {
     return (
-      <button id="quick-demo" onClick={this.quickDemo}>Demo</button>
+      <button id="quick-demo" className="orange-button"
+         onClick={this.quickDemo}>Demo</button>
     );
   }
 
@@ -187,7 +189,7 @@ class SessionForm extends React.Component {
                   placeholder="Password"/>
           </label>
 
-          <input className="demo-disable clickable"
+          <input className="demo-disable orange-button"
                 type="submit" value={this.navLink().buttonText}
                 onClick={this.handleSubmit}/>
           { (login) ? this.renderDemoButton() : this.renderQuickDemo() }

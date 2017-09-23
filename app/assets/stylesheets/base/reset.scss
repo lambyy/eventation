@@ -57,13 +57,16 @@ table {
 	border-spacing: 0;
 }
 
-button, input {
+button, input, a {
 	font-family: "Open Sans", "Roboto", helvetica, sans-serif;
+	cursor: pointer;
+}
+
+button {
 	border: none;
 }
 
-
-button:hover, link:hover, input[type="submit"] {
+button:hover, a:hover, input[type="submit"] {
 	cursor: pointer;
 }
 
@@ -84,4 +87,26 @@ button:focus, input[type="submit"]:focus {
 	content: "";
 	display: block;
 	clear: both;
+}
+
+.orange-button {
+	background-color: $orange;
+	color: $white;
+	border: none;
+	border-radius: 22px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.orange-button:hover {
+	background: $white;
+	color: $orange;
+	border: 2px solid $orange;
+}
+
+.orange-button[disabled] {
+	background: $orange;
+	color: $white;
+	border: none;
+	cursor: default;
 }

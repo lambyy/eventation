@@ -3,6 +3,7 @@ $event-form-side-margin: 15%;
 .event-form {
   display: flex;
   flex-direction: column;
+  padding-top: 20px;
   padding-bottom: 75px;
   background-color: $lightest-grey;
 
@@ -11,6 +12,11 @@ $event-form-side-margin: 15%;
     margin: 10px 0;
     width: 60%;
     font-size: 16px;
+    color: $black;
+  }
+
+  input {
+    border: 1px solid $lighter-grey;
   }
 
   textarea {
@@ -27,7 +33,7 @@ $event-form-side-margin: 15%;
     font-weight: 600;
     color: $grey;
     padding: 3px 0;
-    margin: 25px $event-form-side-margin;
+    margin: 15px $event-form-side-margin;
     border-bottom: 3px solid $light-grey;
   }
 
@@ -43,10 +49,15 @@ $event-form-side-margin: 15%;
     color: $white;
     font-weight: 700;
     width: auto;
+    border: none;
     border-radius: 4px;
     margin: auto;
     padding: 10px 20px;
     background-color: $green;
+  }
+
+  input[type="submit"]:hover {
+    background-color: darken($green, 10%);
   }
 
   label {
@@ -54,11 +65,18 @@ $event-form-side-margin: 15%;
   }
 }
 
+.error-display {
+  margin: 0 $event-form-side-margin;
+  padding-bottom: 20px;
+  color: $dark-orange;
+  // font-weight: 600;
+}
+
 .detail-form {
   margin: 0 $event-form-side-margin;
 }
 
-.event-time {
+.event-time, .event-form-header {
   display: flex;
   flex-direction: row;
 
@@ -70,4 +88,24 @@ $event-form-side-margin: 15%;
       width: 95%;
     }
   }
+}
+
+.event-form-header {
+  margin: 30px 20px;
+  justify-content: space-between;
+
+  p {
+    font-size: 26px;
+  }
+
+  .orange-button {
+    border: 2px solid $orange;
+    padding: 5px 20px;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 50px;
+  background-color: $grey;
 }

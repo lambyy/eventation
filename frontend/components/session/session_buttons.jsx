@@ -6,7 +6,7 @@ const SessionButtons = (props) => {
   const logoutRedirect = () => {
     if (props.location.pathname !== "/") {
       return (
-        <Link to="/" onClick={props.logout} className="clickable">LOGOUT</Link>
+        <Link to="/" onClick={props.logout}>LOGOUT</Link>
       );
     } else {
       return (

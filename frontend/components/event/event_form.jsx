@@ -177,17 +177,24 @@ class EventForm extends React.Component {
 
   render() {
     return (
-      <form className="event-form">
-        <div>Create An Event</div>
-        <p><span>1</span>Event Details</p>
-        <ul className="error-display">{this.renderEventErrors()}</ul>
-        {this.renderDetailForm()}
-        <p><span>2</span>Create Tickets</p>
-        <br/>
-        <input type="submit" className="clickable"
-            value="MAKE YOUR EVENT LIVE"
-            onClick={this.handleSubmit} />
-      </form>
+      <div>
+        <div className="event-form-header">
+          <p>Create An Event</p>
+          <input type="submit" className="orange-button"
+            value="Publish" onClick={this.handleSubmit} />
+        </div>
+        <div className="divider"></div>
+        <form className="event-form">
+          <p><span>1</span>Event Details</p>
+          <ul className="error-display">{this.renderEventErrors()}</ul>
+          {this.renderDetailForm()}
+          <p><span>2</span>Create Tickets</p>
+          <br/>
+          <input type="submit"
+              value="MAKE YOUR EVENT LIVE"
+              onClick={this.handleSubmit} />
+        </form>
+      </div>
     );
   }
 }

@@ -35,27 +35,8 @@ $input-height: 30px;
     font-size: 16px;
   }
 
-  button, input[type="submit"] {
-    background-color: $orange;
-    color: $white;
-    border: none;
-    border-radius: 22px;
+  .orange-button {
     width: ($form-width + 20px);
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  button:hover, input[type="submit"]:hover {
-    background: $white;
-    color: $orange;
-    border: 2px solid $orange;
-  }
-
-  button[disabled], input[type="submit"][disabled] {
-    background: $orange;
-    color: $white;
-    border: none;
-    cursor: default;
   }
 
   p:first-of-type {
