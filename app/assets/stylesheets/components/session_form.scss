@@ -10,6 +10,23 @@ $input-height: 30px;
   font-weight: normal;
   margin-top: 40px;
 
+  > p > a {
+    color: $blue;
+    text-decoration: underline;
+  }
+
+  > p {
+    padding: 5px;
+  }
+
+  > ul {
+    width: $form-width + $input-width;
+    margin: 15px 0;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+  }
+
   input, button {
     margin: 5px 0;
     padding: 0 10px;
@@ -44,39 +61,22 @@ $input-height: 30px;
   button:focus, input[type="submit"]:focus {
     outline: 0;
   }
+
+  p:first-of-type {
+    font-size: 24px;
+  }
 }
 
 .name {
   display: flex;
-}
 
-.session-form > p {
-  padding: 5px;
-}
+  label {
+    padding: 0 5px;
+  }
 
-.session-form > p > a {
-  color: $blue;
-  text-decoration: underline;
-}
-
-.session-form > ul {
-  width: $form-width + $input-width;
-  margin: 15px 0;
-  font-weight: 600;
-  font-size: 14px;
-  text-align: center;
-}
-
-.name label {
-  padding: 0 5px;
-}
-
-.name input {
-  width: $input-width;
-}
-
-.session-form p:first-of-type {
-  font-size: 24px;
+  input {
+    width: $input-width;
+  }
 }
 
 .fa-user-circle {
