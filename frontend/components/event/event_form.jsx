@@ -184,7 +184,8 @@ class EventForm extends React.Component {
         {this.renderDetailForm()}
         <p><span>2</span>Create Tickets</p>
         <br/>
-        <input type="submit" value="MAKE YOUR EVENT LIVE"
+        <input type="submit" className="clickable"
+            value="MAKE YOUR EVENT LIVE"
             onClick={this.handleSubmit} />
       </form>
     );
