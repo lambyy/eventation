@@ -8,7 +8,7 @@ const NavBar = () => (
       <Link to="/">Eventation</Link>
     </nav>
     <nav className="right-nav">
-      <Link to="/events/browse">BROWSE</Link>
+      <Link to="/events/browse">BROWSE EVENTS</Link>
       <SessionButtonsContainer />
       <Link to="/events/create">CREATE</Link>
     </nav>

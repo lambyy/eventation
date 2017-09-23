@@ -1,5 +1,5 @@
-$nav-height: 60px;
-$logo-font-size: 28px;
+$nav-height: 55px;
+$logo-font-size: 24px;
 $link-font-size: 14px;
 
 .main-nav, .nav-user {
@@ -15,7 +15,7 @@ $link-font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
   border-right: 1px solid $light-grey;
-  padding: (($nav-height - $logo-font-size - 10px)/2) 25px;
+  padding: (($nav-height - $logo-font-size - 10px)/2) 20px;
   color: $orange;
 }
 
@@ -29,7 +29,7 @@ $link-font-size: 14px;
 .right-nav a, .right-nav span {
   white-space: nowrap;
   border-left: 1px solid $light-grey;
-  padding: (($nav-height - $link-font-size)/2) 28px;
+  padding: (($nav-height - $link-font-size)/2) 25px;
 }
 
 .right-nav > a:last-child {
