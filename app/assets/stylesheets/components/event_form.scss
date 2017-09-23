@@ -1,13 +1,25 @@
 $event-form-side-margin: 15%;
-$event-input-width: 30%;
 
 .event-form {
   display: flex;
   flex-direction: column;
+  padding-bottom: 75px;
+  background-color: $lightest-grey;
 
   input, textarea, select {
-    padding: 5px;
-    margin: 7px 0;
+    padding: 8px;
+    margin: 10px 0;
+    width: 60%;
+    font-size: 16px;
+  }
+
+  textarea {
+    height: 200px;
+  }
+
+  select {
+    background-color: $white;
+    width: 50%;
   }
 
   p {
@@ -30,15 +42,26 @@ $event-input-width: 30%;
   input[type="submit"] {
     margin: auto;
   }
+
+  label {
+    font-weight: bold;
+  }
 }
 
 .detail-form {
-  // background-color: pink;
-
   margin: 0 $event-form-side-margin;
 }
 
 .event-time {
   display: flex;
   flex-direction: row;
+
+  label {
+    width: 35%;
+    margin: 0 15px 0 0;
+
+    input {
+      width: 95%;
+    }
+  }
 }
