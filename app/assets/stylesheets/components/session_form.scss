@@ -9,6 +9,41 @@ $input-height: 30px;
   width: 100%;
   font-weight: normal;
   margin-top: 40px;
+
+  input, button {
+    margin: 5px 0;
+    padding: 0 10px;
+    width: $form-width;
+    height: $input-height;
+    font-size: 16px;
+  }
+
+  button, input[type="submit"] {
+    background-color: $orange;
+    color: $white;
+    border: none;
+    border-radius: 22px;
+    width: ($form-width + 20px);
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  button:hover, input[type="submit"]:hover {
+    background: $white;
+    color: $orange;
+    border: 2px solid $orange;
+  }
+
+  button[disabled], input[type="submit"][disabled] {
+    background: $orange;
+    color: $white;
+    border: none;
+    cursor: default;
+  }
+
+  button:focus, input[type="submit"]:focus {
+    outline: 0;
+  }
 }
 
 .name {
@@ -32,15 +67,6 @@ $input-height: 30px;
   text-align: center;
 }
 
-.session-form input, button {
-  margin: 5px 0;
-  padding: 0 10px;
-  width: $form-width;
-  height: $input-height;
-  font-size: 16px;
-  font-family: "Open Sans", "Roboto", helvetica, sans-serif;
-}
-
 .name label {
   padding: 0 5px;
 }
@@ -57,31 +83,4 @@ $input-height: 30px;
   font-size: 72px;
   color: $orange;
   margin: 15px;
-}
-
-.session-form button, input[type="submit"] {
-  background-color: $orange;
-  color: $white;
-  border: none;
-  border-radius: 22px;
-  width: ($form-width + 20px);
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.session-form button:hover, input[type="submit"]:hover {
-  background: $white;
-  color: $orange;
-  border: 2px solid $orange;
-}
-
-.session-form button[disabled], input[type="submit"][disabled] {
-  background: $orange;
-  color: $white;
-  border: none;
-  cursor: default;
-}
-
-.session-form button:focus, input[type="submit"]:focus {
-  outline: 0;
 }

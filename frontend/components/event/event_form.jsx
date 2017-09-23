@@ -178,6 +178,7 @@ class EventForm extends React.Component {
   render() {
     return (
       <form className="event-form">
+        <div>Create An Event</div>
         <p><span>1</span>Event Details</p>
         <ul className="error-display">{this.renderEventErrors()}</ul>
         {this.renderDetailForm()}
