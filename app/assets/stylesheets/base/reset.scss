@@ -41,10 +41,6 @@ body {
 	line-height: 1;
 }
 
-button:hover, link:hover {
-	cursor: pointer;
-}
-
 ol, ul {
 	list-style: none;
 }
@@ -61,8 +57,18 @@ table {
 	border-spacing: 0;
 }
 
-input, button {
+button, input {
 	font-family: "Open Sans", "Roboto", helvetica, sans-serif;
+	border: none;
+}
+
+
+button:hover, link:hover, input[type="submit"] {
+	cursor: pointer;
+}
+
+button:focus, input[type="submit"]:focus {
+	outline: 0;
 }
 
 .clickable {

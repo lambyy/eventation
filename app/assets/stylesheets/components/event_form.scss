@@ -40,11 +40,12 @@ $event-form-side-margin: 15%;
   }
 
   input[type="submit"] {
-    margin: auto;
     color: $white;
-    font-weight: bold;
-    border-radius: 7px;
-    width: 270px;
+    font-weight: 700;
+    width: auto;
+    border-radius: 4px;
+    margin: auto;
+    padding: 10px 20px;
     background-color: $green;
   }
 
