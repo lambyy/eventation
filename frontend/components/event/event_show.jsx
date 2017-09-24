@@ -1,5 +1,6 @@
 import React from 'react';
-import EventDigest from './event_digest';
+import EventDigest from './event_show/event_digest';
+import EventDescription from './event_show/event_description';
 
 class EventShow extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class EventShow extends React.Component {
         </div>
         <EventDigest event={event} startDate={startDate}/>
         <div className="event-register"></div>
-        <div className="event-description">DESCRIPTION</div>
+        <EventDescription description={event.description}/>
         <div className="event-location">LOCATION</div>
       </div>
     );
