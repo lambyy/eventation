@@ -1,15 +1,18 @@
 $image-height: 350px;
 $image-width: 70%;
 $register-height: 50px;
+$event-show-border-radius: 4px;
 
 .event-show-page {
-  position: relative;
+  position: absolute;
+  box-sizing: border-box;
+  background-color: $lightest-grey;
 
   .event-backdrop {
+    position: absolute;
     width: 100%;
     height: $image-height + $register-height + 20px;
     overflow: hidden;
-    background-color: purple;
 
     > img {
       -webkit-filter: blur(6px);
@@ -25,12 +28,13 @@ $register-height: 50px;
 .event-show {
   display: flex;
   flex-wrap: wrap;
-  position: absolute;
-  top: 0;
+  position: relative;
   z-index: 10;
   margin: 40px 10%;
   width: 80%;
   min-width: 650px;
+  border-radius: $event-show-border-radius;
+  box-shadow: 0px 1px 5px $light-grey;
 
   .event-image, .event-digest {
     height: $image-height;
@@ -47,6 +51,7 @@ $register-height: 50px;
     align-items: center;
 
     img {
+      border-top-left-radius: $event-show-border-radius;
       min-height: $image-height;
       width: 100%;
     }
@@ -54,23 +59,43 @@ $register-height: 50px;
 
   .event-digest, .event-location {
     width: 100% - $image-width;
-    background-color: pink;
+  }
+
+  .event-digest {
+    padding: 30px;
+    background-color: $lightest-grey;
+    border-top-right-radius: $event-show-border-radius;
+
+    .digest-date {
+      font-size: 18px;
+      text-align: center;
+      width: 30px;
+    }
+
+      > p:nth-child(2) {
+      margin: 20px 0;
+      font-weight: 600;
+      font-size: 24px;
+    }
+
   }
 
   .event-register {
     height: $register-height;
     width: 100%;
-    background-color: maroon;
+    background-color: $white;
+    border: 1px solid $light-grey;
   }
 
   .event-description, .event-location {
+    background-color: $white;
     min-height: 330px;
   }
 
   .event-location {
-    background-color: orange;
+    border-bottom-right-radius: $event-show-border-radius;
   }
   .event-description {
-    background-color: grey;
+    border-bottom-left-radius: $event-show-border-radius;
   }
 }
