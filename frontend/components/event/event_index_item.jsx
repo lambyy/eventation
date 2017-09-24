@@ -2,7 +2,9 @@ import React from 'react';
 
 const EventIndexItem = () => (
   <div className="event-index-item">
-    EVENT INDEX ITEM!
+    <div className="event-image">EVENT IMAGE</div>
+    <div className="event-digest">EVENT DIGEST</div>
+    <div className="event-extras">Extras</div>
   </div>
 );
 

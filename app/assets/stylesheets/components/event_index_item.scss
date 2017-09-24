@@ -1,0 +1,25 @@
+$item-image-height: 150px;
+$item-image-width: $item-image-height * 2;
+
+.event-index-item {
+  width: $item-image-width;
+  height: $item-image-height * 2;
+  display: grid;
+  grid-template-rows: $item-image-height 2fr 1fr;
+  grid-template-columns: $item-image-width;
+
+  .event-image {
+    grid-area: 1 / 1;
+    background-color: pink;
+  }
+
+  .event-digest {
+    grid-area: 2 / 1;
+    background-color: grey;
+  }
+
+  .event-extras {
+    grid-area: 3 / 1;
+    background-color: $orange;
+  }
+}
