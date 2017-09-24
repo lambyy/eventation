@@ -1,9 +1,9 @@
 import React from 'react';
-import EventIndex from './event/event_index';
+import EventIndexContainer from './event/event_index_container';
 
 const Dashboard = () => (
   <div className="dashboard">
-    <EventIndex />
+    <EventIndexContainer />
   </div>
 );
 
