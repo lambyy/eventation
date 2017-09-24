@@ -31,17 +31,22 @@ class EventShow extends React.Component {
     const endDate = new Date(event.end_date);
 
     return (
-      <div className="event-show">
-        <div className="event-image">
+      <div className="event-show-page">
+        <div className="event-backdrop">
           <img src={event.image_url}/>
         </div>
-        <EventDigest event={event} startDate={startDate}/>
-        <EventRegistration />
-        <EventDescription description={event.description}/>
-        <EventLocation location={event.location}
-            startDate={startDate}
-            endDate={endDate}
-        />
+        <div className="event-show">
+          <div className="event-image">
+            <img src={event.image_url}/>
+          </div>
+          <EventDigest event={event} startDate={startDate}/>
+          <EventRegistration />
+          <EventDescription description={event.description}/>
+          <EventLocation location={event.location}
+              startDate={startDate}
+              endDate={endDate}
+          />
+        </div>
       </div>
     );
   }
