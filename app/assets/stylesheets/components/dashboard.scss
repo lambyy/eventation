@@ -20,7 +20,7 @@
 .parallax::after {
   content: " ";
   position: absolute;
-  top: 0;
+  top: -30px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -30,12 +30,6 @@
   z-index: -1;
 }
 
-.bg {
-  // width: 100%;
-  // object-fit: contain;
-}
-
 .bg::after {
-  // overflow: hidden;
   background-image: url("http://www.so-events.at/SYSTEM/image_background/standard/background_02.jpg");
 }
