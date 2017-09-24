@@ -81,10 +81,24 @@ $event-show-border-radius: 4px;
   }
 
   .event-register {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: $register-height;
     width: 100%;
     background-color: $white;
     border: 1px solid $light-grey;
+    padding: 10px 3%;
+
+    .green-button {
+      padding: 5px (79% - $image-width);
+      font-size: 16px;
+      font-weight: 600
+    }
+
+    .fa {
+      font-size: 24px;
+    }
   }
 
   .event-description, .event-location {
