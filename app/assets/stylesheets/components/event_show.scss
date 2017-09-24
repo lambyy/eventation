@@ -2,11 +2,13 @@ $image-height: 350px;
 $image-width: 70%;
 $register-height: 50px;
 $event-show-border-radius: 4px;
+$description-padding: 35px;
 
 .event-show-page {
   position: absolute;
   box-sizing: border-box;
   background-color: $lightest-grey;
+  // min-width: 975px;
 
   .event-backdrop {
     position: absolute;
@@ -49,9 +51,9 @@ $event-show-border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-left-radius: $event-show-border-radius;
 
     img {
-      border-top-left-radius: $event-show-border-radius;
       min-height: $image-height;
       width: 100%;
     }
@@ -104,12 +106,26 @@ $event-show-border-radius: 4px;
   .event-description, .event-location {
     background-color: $white;
     min-height: 330px;
+    line-height: 1.4;
+    word-spacing: 1px;
+
+    h3 {
+      font-weight: 600;
+      padding: 15px 0;
+    }
+  }
+
+  .event-description {
+    padding: $description-padding 80px;
+    border-bottom-left-radius: $event-show-border-radius;
+
+    p {
+      padding: 5px 0;
+    }
   }
 
   .event-location {
+    padding: $description-padding 15px;
     border-bottom-right-radius: $event-show-border-radius;
-  }
-  .event-description {
-    border-bottom-left-radius: $event-show-border-radius;
   }
 }
