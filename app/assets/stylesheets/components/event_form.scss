@@ -46,18 +46,11 @@ $event-form-side-margin: 15%;
   }
 
   input[type="submit"] {
-    color: $white;
-    font-weight: 700;
-    width: auto;
-    border: none;
-    border-radius: 4px;
     margin: auto;
+    color: $white;
+    width: auto;
     padding: 10px 20px;
-    background-color: $green;
-  }
-
-  input[type="submit"]:hover {
-    background-color: darken($green, 10%);
+    border: none;
   }
 
   label {

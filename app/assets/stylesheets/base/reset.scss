@@ -110,3 +110,16 @@ button:focus, input[type="submit"]:focus {
 	border: none;
 	cursor: default;
 }
+
+.green-button {
+	color: $white;
+	font-weight: 700;
+	width: auto;
+	border: none;
+	border-radius: 4px;
+	background-color: $green;
+}
+
+.green-button:hover {
+	background-color: darken($green, 10%);
+}

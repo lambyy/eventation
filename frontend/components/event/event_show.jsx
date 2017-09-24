@@ -1,5 +1,6 @@
 import React from 'react';
 import EventDigest from './event_show/event_digest';
+import EventRegistration from './event_show/event_registration';
 import EventDescription from './event_show/event_description';
 import EventLocation from './event_show/event_location';
 
@@ -35,7 +36,7 @@ class EventShow extends React.Component {
           <img src={event.image_url}/>
         </div>
         <EventDigest event={event} startDate={startDate}/>
-        <div className="event-register"></div>
+        <EventRegistration />
         <EventDescription description={event.description}/>
         <EventLocation location={event.location}
             startDate={startDate}
