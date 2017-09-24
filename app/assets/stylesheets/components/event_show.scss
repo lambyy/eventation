@@ -121,3 +121,14 @@ $description-padding: 35px;
     border-bottom-right-radius: $event-show-border-radius;
   }
 }
+
+.event-show-errors {
+  margin: 50px auto;
+  text-align: center;
+  font-size: 24px;
+
+  li {
+    width: auto;
+    list-style: none;
+  }
+}

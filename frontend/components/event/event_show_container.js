@@ -5,7 +5,8 @@ import EventShow from './event_show';
 
 const mapStateToProps = (state, {match}) => ({
   event: state.entities.events[match.params.eventId],
-  eventId: match.params.eventId
+  eventId: match.params.eventId,
+  errors: state.errors.event
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -22,9 +22,20 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { event } = this.props;
+    const { event, errors } = this.props;
 
-    if (!event) return null;
+    if (!event) {
+      if (errors) {
+        console.log(errors);
+        return (
+          <div className="event-show-errors">
+            {errors.map( (error, idx) => <li key={idx}>{error}</li>)}
+          </div>
+        );
+      }
+
+      return null;
+    }
 
     const startDate = new Date(event.start_date);
     const endDate = new Date(event.end_date);
