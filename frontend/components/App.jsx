@@ -8,7 +8,7 @@ import EventFormContainer from './event/event_form_container';
 import EventShowContainer from './event/event_show_container';
 
 const App = () => (
-  <div>
+  <div className="dashboard">
     <NavBar />
     <Switch>
       <Route exact path="/" component={Dashboard} />
