@@ -22,7 +22,6 @@ class EventShow extends React.Component {
   }
 
   render() {
-    // console.log(this.props.event);
     const { event } = this.props;
 
     if (!event) return null;
