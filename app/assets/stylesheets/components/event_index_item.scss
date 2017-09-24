@@ -7,18 +7,26 @@ $item-image-width: $item-image-height * 2;
   display: grid;
   grid-template-rows: $item-image-height 2fr 1fr;
   grid-template-columns: $item-image-width;
+  margin: 20px 10px;
 
-  .event-image {
+  .event-item-image {
     grid-area: 1 / 1;
-    background-color: pink;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 120%;
+    }
   }
 
-  .event-digest {
+  .event-item-digest {
     grid-area: 2 / 1;
     background-color: grey;
   }
 
-  .event-extras {
+  .event-item-extras {
     grid-area: 3 / 1;
     background-color: $orange;
   }

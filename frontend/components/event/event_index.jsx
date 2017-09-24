@@ -6,15 +6,20 @@ class EventIndex extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.requestAllEvents();
   }
 
   render() {
-    console.log(this.props.events);
+    const { events } = this.props;
+
+    const eventsList = events.map( event =>
+      <EventIndexItem key={event.id} event={event} />
+    );
+
     return (
       <div className="event-index">
-        <EventIndexItem />
+        {eventsList}
       </div>
     );
   }

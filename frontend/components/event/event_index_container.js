@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import { requestAllEvents } from '../../actions/event_actions';
+import { selectAllEvents } from '../../reducers/selectors';
 import EventIndex from './event_index';
 
 const mapStateToProps = (state) => ({
-  events: state.entities.events
+  events: selectAllEvents(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
