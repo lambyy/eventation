@@ -47,7 +47,6 @@ class EventForm extends React.Component {
 
   defaultState() {
     return {
-      organizer_id: this.props.currentUser.id,
       title: "",
       location: "",
       start_date: "",
@@ -82,7 +81,6 @@ class EventForm extends React.Component {
   }
 
   render() {
-    console.log("FORM STATE------------", this.state);
     return (
       <div>
         <div className="event-form-header">

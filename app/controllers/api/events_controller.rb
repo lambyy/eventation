@@ -18,6 +18,7 @@ class Api::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.organizer_id = current_user.id
 
     if @event.save
       render '/api/events/show'
@@ -55,7 +56,7 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:organizer_id, :title, :location, :start_date,
+    params.require(:event).permit(:title, :location, :start_date,
       :end_date, :image_url, :description, :category, :event_type)
   end
 

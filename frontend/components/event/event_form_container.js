@@ -16,7 +16,6 @@ const mapStateToProps = (state, { match }) => {
 
   return {
     event,
-    currentUser: state.session.currentUser,
     errors: state.errors.event
   };
 };
