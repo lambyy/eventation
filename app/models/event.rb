@@ -40,4 +40,21 @@ class Event < ApplicationRecord
   has_many :registered_users,
     through: :tickets,
     source: :registered_users
+
+  def self.create_event_with_tickets(params, current_user)
+    event_params = params.reject { |k, _| k == "tickets" }
+    tickets_params = params.select { |k, _| k == "tickets" }
+    event = Event.new(event_params)
+    event.organizer_id = current_user.id
+
+    if event.save
+      tickets_params[:tickets].each do |_, ticket_params|
+        ticket_params[:event_id] = event.id
+        Ticket.create(ticket_params)
+      end
+      event
+    else
+      event.errors.full_messages
+    end
+  end
 end

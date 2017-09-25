@@ -17,25 +17,14 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    ticket_errors = []
-    ticket_params[:tickets].each do |_, ticket|
-      t = Ticket.new(ticket)
-      unless t.valid?
-        ticket_errors += t.errors.full_messages
-      end
-    end
+    ticket_errors = Ticket.check_tickets(event_params)
 
     if ticket_errors == []
-      @event = Event.new(event_params)
-      @event.organizer_id = current_user.id
-      if @event.save
-        ticket_params[:tickets].each do |_, ticket|
-          ticket[:event_id] = @event.id
-          Ticket.create(ticket)
-        end
+      @event = Event.create_event_with_tickets(event_params, current_user)
+      if @event.is_a?(Event)
         render '/api/events/show'
       else
-        render json: @event.errors.full_messages, status: 422
+        render json: @event, status: 422
       end
     else
       render json: ticket_errors, status: 422
@@ -73,7 +62,7 @@ class Api::EventsController < ApplicationController
   def event_params
     params.require(:event)
       .permit(:title, :location, :start_date, :end_date, :image_url,
-              :description, :category, :event_type)
+              :description, :category, :event_type, :tickets => [{}, :name, :quantity, :price])
   end
 
   def ticket_params
