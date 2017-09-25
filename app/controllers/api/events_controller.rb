@@ -17,13 +17,28 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.organizer_id = current_user.id
+    ticket_errors = []
+    ticket_params[:tickets].each do |_, ticket|
+      t = Ticket.new(ticket)
+      unless t.valid?
+        ticket_errors += t.errors.full_messages
+      end
+    end
 
-    if @event.save
-      render '/api/events/show'
+    if ticket_errors == []
+      @event = Event.new(event_params)
+      @event.organizer_id = current_user.id
+      if @event.save
+        ticket_params[:tickets].each do |_, ticket|
+          ticket[:event_id] = @event.id
+          Ticket.create(ticket)
+        end
+        render '/api/events/show'
+      else
+        render json: @event.errors.full_messages, status: 422
+      end
     else
-      render json: @event.errors.full_messages, status: 422
+      render json: ticket_errors, status: 422
     end
   end
 
@@ -56,8 +71,13 @@ class Api::EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :location, :start_date,
-      :end_date, :image_url, :description, :category, :event_type)
+    params.require(:event)
+      .permit(:title, :location, :start_date, :end_date, :image_url,
+              :description, :category, :event_type)
+  end
+
+  def ticket_params
+    params.require(:event).permit(:tickets => [{}, :name, :quantity, :price])
   end
 
   def require_owner
