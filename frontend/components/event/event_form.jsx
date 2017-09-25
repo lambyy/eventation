@@ -21,6 +21,7 @@ class EventForm extends React.Component {
 
   componentWillMount() {
     window.scrollTo(0, 0);
+    this.props.clearErrors();
     if (this.props.eventId && !this.props.event) {
       this.props.requestEvent(this.props.eventId);
     }
