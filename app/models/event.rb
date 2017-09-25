@@ -30,7 +30,3 @@ class Event < ApplicationRecord
 
   belongs_to :organizer, foreign_key: :organizer_id, class_name: :User
 end
-
-# Event.new({organizer_id: 1, title: "Cook Ramen", location: "San Francisco",
-# start_date: "2017-10-03T02:00", end_date: "2017-10-03T04:00", image_url: "cats.jpg", description:
-# "raaaaaaaamen", category: "Music", event_type: "Class"})
