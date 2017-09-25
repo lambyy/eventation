@@ -9,7 +9,7 @@ class EventImageUpload extends React.Component {
 
   upload(e) {
     e.preventDefault();
-    window.cloudinary.openUploadWidget(
+    cloudinary.openUploadWidget(
       window.cloudinary_options,
       (error, image) => {
         if (error === null) {
