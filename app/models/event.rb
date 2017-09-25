@@ -28,7 +28,16 @@ class Event < ApplicationRecord
   validates_inclusion_of :category, in: CATEGORIES
   validates_inclusion_of :event_type, in: EVENT_TYPES
 
-  belongs_to :organizer, foreign_key: :organizer_id, class_name: :User
-  has_many :tickets, foreign_key: :event_id, class_name: :Ticket
-  has_many :registered_users, through: :tickets, source: :registered_users
+  belongs_to :organizer,
+    foreign_key: :organizer_id,
+    class_name: :User
+
+  has_many :tickets,
+    foreign_key: :event_id,
+    class_name: :Ticket,
+    dependent: :destroy
+
+  has_many :registered_users,
+    through: :tickets,
+    source: :registered_users
 end
