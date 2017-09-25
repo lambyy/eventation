@@ -82,6 +82,7 @@ class EventForm extends React.Component {
   }
 
   render() {
+    console.log("FORM STATE------------", this.state);
     return (
       <div>
         <div className="event-form-header">

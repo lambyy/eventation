@@ -13,7 +13,7 @@ class EventImageUpload extends React.Component {
       window.cloudinary_options,
       (error, image) => {
         if (error === null) {
-          this.props.updateImageURL(image.url);
+          this.props.updateImageURL(image[0].url);
         }
       }
     );
@@ -24,10 +24,10 @@ class EventImageUpload extends React.Component {
     console.log(imageUrl);
     return (
       <div className="image-upload">
-        <button onClick={this.upload}>
+        <button className="green-button" onClick={this.upload}>
           { `${imageUrl ? "EDIT": "ADD"} EVENT IMAGE` }
         </button>
-        { imageUrl ? <p>{imageUrl}</p> : null }
+        { imageUrl ? <div>{imageUrl}</div> : null }
       </div>
     );
   }

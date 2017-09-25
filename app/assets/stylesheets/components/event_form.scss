@@ -67,6 +67,27 @@ $event-form-side-margin: 15%;
 
 .detail-form {
   margin: 0 $event-form-side-margin;
+
+  .image-upload {
+    display: flex;
+    align-items: center;
+    cursor: default;
+    margin: 10px 0;
+
+    .green-button {
+      width: 140px;
+      padding: 5px 10px;
+      white-space: nowrap;
+    }
+
+    div {
+      width: 65%;
+      font-size: 12px;
+      font-weight: 300;
+      word-wrap: break-word;
+      margin: 0 15px;
+    }
+  }
 }
 
 .event-time, .event-form-header {
