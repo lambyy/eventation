@@ -6,6 +6,9 @@ const Dashboard = () => (
   <div className="dashboard">
     <NavBar dashboard={true}/>
     <div className="section parallax bg"></div>
+    <div className="section static splash">
+      <p>Find your next experience</p>
+    </div>
     <EventIndexContainer className="section static"/>
   </div>
 );

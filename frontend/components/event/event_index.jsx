@@ -19,6 +19,7 @@ class EventIndex extends React.Component {
 
     return (
       <div className="event-index">
+        <h3>Events for you</h3>
         {eventsList}
       </div>
     );

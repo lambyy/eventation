@@ -3,5 +3,13 @@
   justify-content: center;
   flex-wrap: wrap;
   margin: auto;
+  padding-top: 80px;
   background-color: $lightest-grey;
+
+  h3 {
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 15px;
+  }
 }
