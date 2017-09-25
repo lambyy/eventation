@@ -1,4 +1,5 @@
 import React from 'react';
+import EventImageUpload from './event_image_upload';
 
 const _categories = "Music Arts Food&Drink Other".split(" ");
 const _eventTypes = "Class Concert Performance Other".split(" ");
@@ -30,7 +31,7 @@ class DetailForm extends React.Component {
   render() {
     const { title, location, image_url, description, start_date,
             end_date, event_type, category } = this.props.state;
-    const { update } = this.props;
+    const { update, updateImageURL } = this.props;
 
     return (
       <div className="detail-form">
@@ -69,9 +70,8 @@ class DetailForm extends React.Component {
         <label>
           EVENT IMAGE
           <br/>
-          <input type="text" value={image_url}
-              onChange={update("image_url")}
-              placeholder="Choose an image that brings your event to life"/>
+          <EventImageUpload updateImageURL={updateImageURL}
+              imageUrl={image_url} />
         </label>
         <br/>
         <label>

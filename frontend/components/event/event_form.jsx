@@ -12,6 +12,7 @@ class EventForm extends React.Component {
     }
 
     this.update = this.update.bind(this);
+    this.updateImageURL = this.updateImageURL.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.defaultState = this.defaultState.bind(this);
 
@@ -65,6 +66,10 @@ class EventForm extends React.Component {
     };
   }
 
+  updateImageURL(url) {
+    this.setState({ image_url: url });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     this.props.processForm(this.state)
@@ -88,7 +93,9 @@ class EventForm extends React.Component {
         <form className="event-form">
           <p><span>1</span>Event Details</p>
           <ul className="error-display">{this.renderEventErrors()}</ul>
-          <DetailForm update={this.update} state={this.state}/>
+          <DetailForm update={this.update}
+              updateImageURL={this.updateImageURL}
+              state={this.state}/>
           <p><span>2</span>Create Tickets</p>
           <br/>
           <input type="submit" className="green-button"
