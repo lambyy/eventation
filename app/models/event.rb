@@ -57,4 +57,22 @@ class Event < ApplicationRecord
       event.errors.full_messages
     end
   end
+
+  def update_event_with_tickets(params)
+    event_params = params.reject { |k, _| k == "tickets" }
+    tickets_params = params.select { |k, _| k == "tickets" }
+    tickets_params = tickets_params[:tickets]
+
+    if self.update_attributes(event_params)
+      self.tickets.each do |ticket|
+        ticket_params = tickets_params.select { |_, v| v[:id] == ticket.id.to_s }
+        if ticket_params.values.length > 0
+          ticket.update_attributes(ticket_params.values[0])
+        end
+      end
+      true
+    else
+      false
+    end
+  end
 end

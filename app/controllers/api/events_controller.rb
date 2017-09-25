@@ -32,10 +32,15 @@ class Api::EventsController < ApplicationController
   end
 
   def update
+
     @event = Event.find_by(id: params[:id])
 
     if @event
-      if @event.update_attributes(event_params)
+      ticket_errors = Ticket.check_tickets(event_params)
+
+      if ticket_errors != []
+        render json: ticket_errors, status: 422
+      elsif @event.update_event_with_tickets(event_params)
         render '/api/events/show'
       else
         render json: @event.errors.full_messages, status: 422
@@ -62,17 +67,17 @@ class Api::EventsController < ApplicationController
   def event_params
     params.require(:event)
       .permit(:title, :location, :start_date, :end_date, :image_url,
-              :description, :category, :event_type, :tickets => [{}, :name, :quantity, :price])
-  end
-
-  def ticket_params
-    params.require(:event).permit(:tickets => [{}, :name, :quantity, :price])
+              :description, :category, :event_type, :tickets => [{}, :id, :name, :quantity, :price])
   end
 
   def require_owner
     @event = Event.find_by(id: params[:id])
-    unless @event && (@event.organizer_id == current_user.id)
-      render json: ["You are not the event organizer"], status: 422
+    if @event
+      if @event.organizer_id != current_user.id
+        render json: ["You are not the event organizer"], status: 422
+      end
+    else
+      render json: ["Event does not exist"], status: 404
     end
   end
 
