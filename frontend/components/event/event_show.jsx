@@ -10,6 +10,7 @@ class EventShow extends React.Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     if (!this.props.event) {
       this.props.requestEvent(this.props.eventId);
     }
@@ -17,6 +18,7 @@ class EventShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.eventId !== nextProps.eventId) {
+      window.scrollTo(0, 0);
       this.props.requestEvent(nextProps.eventId);
     }
   }
