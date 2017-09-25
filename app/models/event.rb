@@ -16,8 +16,10 @@
 #  updated_at   :datetime         not null
 #
 
-CATEGORIES = %w(Music Arts Food&Drink Other)
-EVENT_TYPES = %w(Class Concert Performance Other)
+CATEGORIES = %w(Business Sports&Fitness Music Science&Tech
+                Arts Food&Drink Travel&Outdoor Holiday Other)
+EVENT_TYPES = %w(Class Performance Party Networking Concert
+                Festival Attraction Game Gala Convention Other)
 
 class Event < ApplicationRecord
   validates :organizer_id, :title, :location, presence: true

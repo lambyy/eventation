@@ -1,8 +1,10 @@
 import React from 'react';
 import EventImageUpload from './event_image_upload';
 
-const _categories = "Music Arts Food&Drink Other".split(" ");
-const _eventTypes = "Class Concert Performance Other".split(" ");
+const _categoryList = "Business Sports&Fitness Music Science&Tech Arts Food&Drink Travel&Outdoor Holiday Other";
+const _eventTypeList = "Class Performance Party Networking Concert Festival Attraction Game Gala Convention Other";
+const _categories = _categoryList.split(" ");
+const _eventTypes = _eventTypeList.split(" ");
 
 class DetailForm extends React.Component {
   constructor(props) {
