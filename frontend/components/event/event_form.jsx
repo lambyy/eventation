@@ -20,12 +20,14 @@ class EventForm extends React.Component {
   }
 
   componentWillMount() {
+    window.scrollTo(0, 0);
     if (this.props.eventId && !this.props.event) {
       this.props.requestEvent(this.props.eventId);
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    window.scrollTo(0, 0);
     if (nextProps.location.pathname !== this.props.location.pathname) {
       if (!nextProps.event && nextProps.eventId) {
         this.props.requestEvent(nextProps.eventId);
@@ -73,7 +75,7 @@ class EventForm extends React.Component {
     e.preventDefault();
     this.props.processForm(this.state)
       .then(action => this.props.history.push(`/events/${action.event.id}`))
-      .fail(() => setTimeout(() => scroll(0,0), 500));
+      .fail(() => setTimeout(() => window.scrollTo(0,0), 500));
   }
 
   renderEventErrors() {
