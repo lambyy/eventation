@@ -3,17 +3,10 @@ import { postUser, postSession, deleteSession } from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 
-const receiveCurrentUser = (currentUser) => {
-  if (currentUser) {
-    const { id, first_name, last_name } = currentUser;
-    currentUser = { id, first_name, last_name };
-  }
-
-  return {
+const receiveCurrentUser = (currentUser) => ({
     type: RECEIVE_CURRENT_USER,
     currentUser
-  };
-};
+});
 
 const receiveSessionErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
