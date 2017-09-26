@@ -13,6 +13,9 @@ window.requestEvent = requestEvent;
 window.createEvent = createEvent;
 window.updateEvent = updateEvent;
 window.removeEvent = removeEvent;
+import { postRegistration, deleteRegistration } from './util/registration_util';
+window.postRegistration = postRegistration;
+window.deleteRegistration = deleteRegistration;
 
 
 document.addEventListener("DOMContentLoaded", () => {

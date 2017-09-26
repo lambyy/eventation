@@ -4,7 +4,7 @@ class Api::RegistrationsController < ApplicationController
     @registration.user_id = current_user.id
 
     if @registration.save
-      render json: ["Successfully registered"], status: 200
+      render '/api/registrations/show'
     else
       render json: @registration.errors.full_messages, status: 422
     end
@@ -15,6 +15,7 @@ class Api::RegistrationsController < ApplicationController
 
     if @registration
       @registration.destroy
+      render '/api/registrations/show'
     else
       render json: ["No registrations found"], status: 404
     end
