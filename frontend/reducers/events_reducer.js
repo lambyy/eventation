@@ -15,7 +15,8 @@ import {
       });
       return newState;
     case RECEIVE_EVENT:
-      newState[action.event.id] = action.event;
+      let tickets = action.event.tickets.map(ticket => ticket.id);
+      newState[action.event.id] = merge({}, action.event, { tickets });
       return newState;
     case RECEIVE_REMOVE_EVENT:
       delete newState[action.event.id];
