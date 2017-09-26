@@ -151,7 +151,7 @@ class EventForm extends React.Component {
           <p><span>2</span>Create Tickets</p>
           <br/>
           {this.renderTickets()}
-          <button onClick={this.addTicket}>Add Ticket</button>
+          <button className="blue-button" onClick={this.addTicket}>Add Another Ticket</button>
           <br/>
           <input type="submit" className="green-button"
               value="MAKE YOUR EVENT LIVE"

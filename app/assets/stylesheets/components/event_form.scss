@@ -56,6 +56,34 @@ $event-form-side-margin: 15%;
   label {
     font-weight: bold;
   }
+
+  .ticket-form, .ticket-header {
+    margin: 0 $event-form-side-margin;
+    display: flex;
+    // grid-template-columns: 400px 200px 200px;
+    //
+    input {
+      margin: 5px 5px;
+    }
+
+    input:first-child {
+      width: 100%;
+    }
+  }
+
+  ol {
+    list-style: circle;
+  }
+
+  .blue-button {
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    width: 200px;
+    padding: 3px 5px;
+  	font-size: 14px;
+  	font-weight: 600;
+  }
 }
 
 .error-display {

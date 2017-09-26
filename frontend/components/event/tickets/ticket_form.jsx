@@ -14,13 +14,16 @@ class TicketForm extends React.Component {
 
     return (
       <div className="ticket-form">
-        <input type="text" value={ticket.name}
+        <input type="text"
+          value={ticket.name}
           onChange={updateTickets("name", idx)}
           placeholder="Ticket name" />
-        <input type="text" value={ticket.quantity}
+        <input type="text"
+          value={ticket.quantity}
           onChange={updateTickets("quantity", idx)}
           placeholder="Quantity"/>
-        <input type="text" value={ticket.price}
+        <input type="text"
+          value={ticket.price}
           onChange={updateTickets("price", idx)}
           placeholder="Price"/>
       </div>
