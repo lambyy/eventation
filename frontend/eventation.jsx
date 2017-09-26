@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
+import { receiveCurrentUser } from './actions/session_actions';
 
 import { signup, login, logout } from './actions/session_actions';
 window.signup = signup;
@@ -21,8 +22,10 @@ window.removeRegistration = removeRegistration;
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
-    const preloadedState = { session: { currentUser: window.currentUser } };
+    const preloadedState = { session: { currentUser: window.currentUser }};
     store = configureStore(preloadedState);
+    // store.dispatch(receiveCurrentUser(window.currentUser));
+
     delete window.currentUser;
   } else {
     store = configureStore();
