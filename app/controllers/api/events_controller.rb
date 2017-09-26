@@ -27,6 +27,7 @@ class Api::EventsController < ApplicationController
         render json: @event, status: 422
       end
     else
+      debugger
       render json: ticket_errors, status: 422
     end
   end

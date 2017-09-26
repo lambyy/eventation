@@ -6,16 +6,20 @@ import {
   removeEvent
 } from '../../actions/event_actions';
 import { clearErrors } from '../../actions/error_actions';
+import { selectTickets } from '../../reducers/selectors';
 import EventForm from './event_form';
 
 const mapStateToProps = (state, { match }) => {
   let event;
+  let tickets = [];
   if (state.entities.events[match.params.eventId]) {
     event = state.entities.events[match.params.eventId];
+    tickets = selectTickets(state, event.tickets);
   }
 
   return {
     event,
+    tickets,
     errors: state.errors.event
   };
 };

@@ -21,7 +21,7 @@ class EventImageUpload extends React.Component {
 
   render() {
     const { imageUrl } = this.props;
-    console.log(imageUrl);
+
     return (
       <div className="image-upload">
         <button className="green-button" onClick={this.upload}>

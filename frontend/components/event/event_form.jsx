@@ -1,5 +1,7 @@
 import React from 'react';
+import { merge } from 'lodash';
 import DetailForm from './event_form/detail_form';
+import TicketForm from './tickets/ticket_form';
 
 class EventForm extends React.Component {
   constructor(props){
@@ -7,11 +9,16 @@ class EventForm extends React.Component {
 
     if (this.props.event) {
       this.state = this.props.event;
+      this.state.tickets = this.props.tickets;
+      this.state.num_tickets = this.props.tickets.length;
     } else {
       this.state = this.defaultState();
     }
 
     this.update = this.update.bind(this);
+    this.updateTickets = this.updateTickets.bind(this);
+    this.addTicket = this.addTicket.bind(this);
+    this.renderTickets = this.renderTickets.bind(this);
     this.updateImageURL = this.updateImageURL.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.defaultState = this.defaultState.bind(this);
@@ -41,6 +48,10 @@ class EventForm extends React.Component {
 
     if (nextProps.event) {
       this.setState(nextProps.event);
+      this.setState({
+        tickets: nextProps.tickets,
+        num_tickets: nextProps.tickets.length
+      });
     }
 
     if (nextProps.errors == "Event does not exist") {
@@ -57,7 +68,9 @@ class EventForm extends React.Component {
       image_url: "",
       description: "",
       event_type: "1",
-      category: "1"
+      category: "1",
+      tickets: [],
+      num_tickets: 1
     };
   }
 
@@ -66,6 +79,42 @@ class EventForm extends React.Component {
       e.preventDefault();
       this.setState({ [type]: e.target.value });
     };
+  }
+
+  updateTickets(type, idx) {
+    return (e) => {
+      e.preventDefault();
+      let tickets = this.state.tickets.slice();
+      if (type === "name") {
+        tickets[idx] = merge({}, tickets[idx], { name: e.target.value });
+      } else if (type === "quantity") {
+        tickets[idx] = merge({}, tickets[idx], { quantity: e.target.value });
+      } else if (type === "price") {
+        tickets[idx] = merge({}, tickets[idx], { price: e.target.value });
+      }
+
+      this.setState({ tickets });
+    };
+  }
+
+  addTicket() {
+    this.setState({ num_tickets: this.state.num_tickets + 1 });
+  }
+
+  renderTickets() {
+    let tickets = [];
+    for (let i = 0; i < this.state.num_tickets; i++) {
+      let ticket = (this.state.tickets[i])
+        ? this.state.tickets[i] : { name: "", quantity: "", price: "" };
+
+      tickets[i] = <TicketForm
+                      key={i}
+                      idx={i}
+                      formType={this.props.formType}
+                      ticket={ticket}
+                      updateTickets={this.updateTickets}/>;
+    }
+    return tickets;
   }
 
   updateImageURL(url) {
@@ -84,6 +133,7 @@ class EventForm extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <div className="event-form-header">
@@ -99,6 +149,9 @@ class EventForm extends React.Component {
               updateImageURL={this.updateImageURL}
               state={this.state}/>
           <p><span>2</span>Create Tickets</p>
+          <br/>
+          {this.renderTickets()}
+          <button onClick={this.addTicket}>Add Ticket</button>
           <br/>
           <input type="submit" className="green-button"
               value="MAKE YOUR EVENT LIVE"
