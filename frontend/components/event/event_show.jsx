@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from 'react-modal';
 import EventDigest from './event_show/event_digest';
 import EventRegistration from './event_show/event_registration';
 import EventDescription from './event_show/event_description';
@@ -7,6 +8,11 @@ import EventLocation from './event_show/event_location';
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = { showModal: false };
+
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +25,14 @@ class EventShow extends React.Component {
       window.scrollTo(0, 0);
       this.props.requestEvent(nextProps.eventId);
     }
+  }
+
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
 
   render() {
@@ -42,6 +56,12 @@ class EventShow extends React.Component {
 
     return (
       <div className="event-show-page">
+        <Modal
+          isOpen={this.state.showModal}
+          contentLabel="Registration Modal"
+        >
+          <button onClick={this.handleCloseModal}>Close Modal</button>
+        </Modal>
         <div className="event-backdrop">
           <img src={event.image_url}/>
         </div>
@@ -50,7 +70,7 @@ class EventShow extends React.Component {
             <img src={event.image_url}/>
           </div>
           <EventDigest event={event} startDate={startDate}/>
-          <EventRegistration />
+          <EventRegistration handleOpenModal={this.handleOpenModal}/>
           <EventDescription description={event.description}/>
           <EventLocation location={event.location}
               startDate={startDate}

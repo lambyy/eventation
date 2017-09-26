@@ -21,7 +21,6 @@ $description-padding: 35px;
       width: 120%;
       height: 200%;
       margin: -2%;
-      z-index: -10;
     }
   }
 }
@@ -31,7 +30,6 @@ $description-padding: 35px;
   grid-template-columns: 70% 1fr;
   grid-template-rows: $image-height $register-height 1fr;
   position: relative;
-  z-index: 10;
   margin: 40px 10%;
   min-width: 750px;
   border-radius: $event-show-border-radius;
