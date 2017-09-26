@@ -13,12 +13,12 @@ const receiveRemoveRegistration = (registration) => ({
   registration
 });
 
-export const createRegistration = (formRegistration) => dispatch => {
+export const createRegistration = (formRegistration) => dispatch => (
   postRegistration(formRegistration)
-    .then(registration => dispatch(receiveRegistration(registration)));
-};
+    .then(registration => dispatch(receiveRegistration(registration)))
+);
 
-export const removeRegistration = (id) => dispatch => {
+export const removeRegistration = (id) => dispatch => (
   deleteRegistration(id)
-    .then(registration => dispatch(receiveRemoveRegistration(registration)));
-}
+    .then(registration => dispatch(receiveRemoveRegistration(registration)))
+);

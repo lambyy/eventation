@@ -7,7 +7,6 @@ const TicketsReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_EVENT:
       let { tickets } = action.event;
-      console.log(action.event);
       tickets.forEach(ticket => {
         newState[ticket.id] = ticket;
       });

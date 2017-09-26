@@ -1,1 +1,1 @@
-json.partial! 'api/registration/registration', registration: @registration
+json.partial! 'api/registrations/registration', registration: @registration

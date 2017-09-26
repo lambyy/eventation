@@ -7,15 +7,15 @@ import { signup, login, logout } from './actions/session_actions';
 window.signup = signup;
 window.login = login;
 window.logout = logout;
-import { requestAllEvents, requestEvent, createEvent, updateEvent, removeEvent } from './actions/event_actions';
-window.requestAllEvents = requestAllEvents;
-window.requestEvent = requestEvent;
-window.createEvent = createEvent;
-window.updateEvent = updateEvent;
-window.removeEvent = removeEvent;
-import { postRegistration, deleteRegistration } from './util/registration_util';
-window.postRegistration = postRegistration;
-window.deleteRegistration = deleteRegistration;
+// import { requestAllEvents, requestEvent, createEvent, updateEvent, removeEvent } from './actions/event_actions';
+// window.requestAllEvents = requestAllEvents;
+// window.requestEvent = requestEvent;
+// window.createEvent = createEvent;
+// window.updateEvent = updateEvent;
+// window.removeEvent = removeEvent;
+import { createRegistration, removeRegistration } from './actions/registration_actions';
+window.createRegistration = createRegistration;
+window.removeRegistration = removeRegistration;
 
 
 document.addEventListener("DOMContentLoaded", () => {
