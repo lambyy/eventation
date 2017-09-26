@@ -4,6 +4,7 @@ import EventDigest from './event_show/event_digest';
 import EventRegistration from './event_show/event_registration';
 import EventDescription from './event_show/event_description';
 import EventLocation from './event_show/event_location';
+import RegistrationForm from '../registrations/registration_form';
 
 class EventShow extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { event, errors } = this.props;
+    const { event, errors, tickets } = this.props;
 
     if (!event) {
       if (errors) {
@@ -61,6 +62,7 @@ class EventShow extends React.Component {
           contentLabel="Registration Modal"
         >
           <button onClick={this.handleCloseModal}>Close Modal</button>
+          <RegistrationForm tickets={tickets}/>
         </Modal>
         <div className="event-backdrop">
           <img src={event.image_url}/>
