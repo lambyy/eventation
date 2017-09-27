@@ -1,0 +1,42 @@
+.ticket {
+  display: grid;
+  grid-template-rows: 2fr 1fr 50px;
+  grid-template-columns: 4fr 1fr;
+  margin: 10px;
+  background-color: $white;
+  border-left: 5px solid $light-blue;
+  box-shadow: 0px 2px 6px $light-grey;
+
+  > * {
+    padding: 0 20px;
+  }
+
+  .ticket-name {
+    grid-area: 1 / 1;
+    background-color: orange;
+  }
+
+  .ticket-price {
+    grid-area: 2 / 1;
+    background-color: pink;
+  }
+
+  .ticket-num {
+    grid-area: 1 / 2;
+  }
+
+  .ticket-buy {
+    grid-area: 3 / 2;
+    border-top: 2px solid $light-grey;
+  }
+
+  .ticket-total {
+    grid-area: 3 / 1;
+    border-top: 2px solid $light-grey;
+
+    p {
+      padding: 3px 0;
+    }
+  }
+
+}

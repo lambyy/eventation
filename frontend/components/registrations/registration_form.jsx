@@ -12,7 +12,7 @@ const RegistrationForm = (props) => {
   };
 
   return (
-    <div>
+    <div className="registration-form">
       <h3>Register</h3>
       {renderTickets()}
     </div>

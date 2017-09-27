@@ -6,6 +6,12 @@ import EventDescription from './event_show/event_description';
 import EventLocation from './event_show/event_location';
 import RegistrationForm from '../registrations/registration_form';
 
+const customStyles = {
+  content: {
+    backgroundColor: '#f8f8fa'
+  }
+};
+
 class EventShow extends React.Component {
   constructor(props) {
     super(props);
@@ -59,6 +65,7 @@ class EventShow extends React.Component {
       <div className="event-show-page">
         <Modal
           isOpen={this.state.showModal}
+          style={customStyles}
           contentLabel="Registration Modal"
         >
           <button onClick={this.handleCloseModal}>Close Modal</button>

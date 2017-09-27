@@ -16,7 +16,7 @@ class Ticket extends React.Component {
 
   update(e) {
     e.preventDefault();
-    this.setState({ num_tickets: e.taret.value });
+    this.setState({ num_tickets: e.target.value });
   }
 
   renderTicketOptions() {
@@ -30,15 +30,21 @@ class Ticket extends React.Component {
   }
 
   render() {
+    const { name, price } = this.props.ticket;
+    const { num_tickets } = this.state;
 
     return (
-      <div>
-        <h3>{this.props.ticket.name}</h3>
-        <p>{`$${this.props.ticket.price}`}</p>
-        <select value={this.state.num_tickets} onChange={this.update}>
+      <div className="ticket">
+        <h3 className="ticket-name">{name}</h3>
+        <p className="ticket-price">{`$${price}`}</p>
+        <select className="ticket-num" value={num_tickets} onChange={this.update}>
           {this.renderTicketOptions()}
         </select>
-        <button>Register</button>
+        <div className="ticket-total">
+          <p>{`Quantity: ${num_tickets}`}</p>
+          <p>{`Total: $${price * num_tickets}`}</p>
+        </div>
+        <button className="ticket-buy">Register</button>
       </div>
     );
   }
