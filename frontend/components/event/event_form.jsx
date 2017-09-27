@@ -16,9 +16,11 @@ class EventForm extends React.Component {
     }
 
     this.update = this.update.bind(this);
-    this.updateTickets = this.updateTickets.bind(this);
+    this.updateTicket = this.updateTicket.bind(this);
     this.addTicket = this.addTicket.bind(this);
+    this.deleteTicket = this.deleteTicket.bind(this);
     this.renderTickets = this.renderTickets.bind(this);
+
     this.updateImageURL = this.updateImageURL.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.defaultState = this.defaultState.bind(this);
@@ -81,7 +83,7 @@ class EventForm extends React.Component {
     };
   }
 
-  updateTickets(type, idx) {
+  updateTicket(type, idx) {
     return (e) => {
       e.preventDefault();
       let tickets = this.state.tickets.slice();
@@ -92,27 +94,45 @@ class EventForm extends React.Component {
       } else if (type === "price") {
         tickets[idx] = merge({}, tickets[idx], { price: e.target.value });
       }
-
       this.setState({ tickets });
     };
   }
 
   addTicket() {
-    this.setState({ num_tickets: this.state.num_tickets + 1 });
+    let tickets = this.state.tickets.slice();
+    tickets[this.state.num_tickets] =
+      merge({}, {name: "", quantity: "", price: ""});
+
+    this.setState({
+      tickets,
+      num_tickets: this.state.num_tickets + 1
+    });
+  }
+
+  deleteTicket(idx) {
+    let tickets = this.state.tickets.slice();
+    tickets.splice(idx, 1);
+    console.log(tickets);
+
+    this.setState({
+      tickets,
+      num_tickets: this.state.num_tickets - 1
+    });
   }
 
   renderTickets() {
     let tickets = [];
     for (let i = 0; i < this.state.num_tickets; i++) {
-      let ticket = (this.state.tickets[i])
-        ? this.state.tickets[i] : { name: "", quantity: "", price: "" };
+      // let ticket = (this.state.tickets[i])
+      //   ? this.state.tickets[i] : { name: "", quantity: "", price: "" };
 
       tickets[i] = <TicketForm
                       key={i}
                       idx={i}
                       formType={this.props.formType}
-                      ticket={ticket}
-                      updateTickets={this.updateTickets}/>;
+                      ticket={this.state.tickets[i]}
+                      updateTicket={this.updateTicket}
+                      deleteTicket={this.deleteTicket}/>;
     }
     return tickets;
   }

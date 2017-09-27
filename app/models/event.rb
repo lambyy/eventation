@@ -64,12 +64,22 @@ class Event < ApplicationRecord
     tickets_params = tickets_params[:tickets]
 
     if self.update_attributes(event_params)
+      # update or delete existing tickets
       self.tickets.each do |ticket|
         ticket_params = tickets_params.select { |_, v| v[:id] == ticket.id.to_s }
         if ticket_params.values.length > 0
           ticket.update_attributes(ticket_params.values[0])
+        else
+          ticket.destroy
         end
       end
+      # add new tickets
+      new_tickets = tickets_params.select { |_, v| v[:id] == nil }
+      new_tickets.values.each do |new_ticket|
+        new_ticket[:event_id] = self.id
+        Ticket.create(new_ticket)
+      end
+
       true
     else
       false

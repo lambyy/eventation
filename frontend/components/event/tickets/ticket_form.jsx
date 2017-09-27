@@ -6,7 +6,7 @@ class TicketForm extends React.Component {
   }
 
   render() {
-    const { idx, updateTickets, ticket, formType } = this.props;
+    const { idx, updateTicket, ticket, formType, deleteTicket } = this.props;
 
     if (!ticket && formType === "edit") {
       return null;
@@ -16,16 +16,18 @@ class TicketForm extends React.Component {
       <div className="ticket-form">
         <input type="text"
           value={ticket.name}
-          onChange={updateTickets("name", idx)}
+          onChange={updateTicket("name", idx)}
           placeholder="Ticket name" />
         <input type="text"
           value={ticket.quantity}
-          onChange={updateTickets("quantity", idx)}
+          onChange={updateTicket("quantity", idx)}
           placeholder="Quantity"/>
         <input type="text"
           value={ticket.price}
-          onChange={updateTickets("price", idx)}
+          onChange={updateTicket("price", idx)}
           placeholder="Price"/>
+        <button className="fa fa-trash"
+          onClick={() => deleteTicket(idx)}></button>
       </div>
     );
   }
