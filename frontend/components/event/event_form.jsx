@@ -71,7 +71,7 @@ class EventForm extends React.Component {
       description: "",
       event_type: "1",
       category: "1",
-      tickets: [],
+      tickets: [{name: "", quantity: "", price: ""}],
       num_tickets: 1
     };
   }

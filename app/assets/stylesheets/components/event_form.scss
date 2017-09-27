@@ -60,14 +60,22 @@ $event-form-side-margin: 15%;
   .ticket-form, .ticket-header {
     margin: 0 $event-form-side-margin;
     display: flex;
-    // grid-template-columns: 400px 200px 200px;
-    //
+
     input {
       margin: 5px 5px;
     }
 
     input:first-child {
-      width: 100%;
+      width: 120%;
+    }
+
+    button {
+      padding: 5px 5px;
+      background-color: transparent;
+    }
+
+    .fa-trash {
+      font-size: 20px;
     }
   }
 

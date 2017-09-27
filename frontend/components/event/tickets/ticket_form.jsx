@@ -17,7 +17,7 @@ class TicketForm extends React.Component {
         <input type="text"
           value={ticket.name}
           onChange={updateTicket("name", idx)}
-          placeholder="Ticket name" />
+          placeholder="Ticket name (Early Bird, RSVP...)" />
         <input type="text"
           value={ticket.quantity}
           onChange={updateTicket("quantity", idx)}
