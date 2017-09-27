@@ -12,6 +12,7 @@ class Ticket extends React.Component {
 
     this.update = this.update.bind(this);
     this.renderTicketOptions = this.renderTicketOptions.bind(this);
+    this.registerTicket = this.registerTicket.bind(this);
   }
 
   update(e) {
@@ -29,6 +30,12 @@ class Ticket extends React.Component {
     return ticketOptions;
   }
 
+  registerTicket(e) {
+    e.preventDefault();
+    console.log(this.state);
+    this.props.createRegistration(this.state);
+  }
+
   render() {
     const { name, price } = this.props.ticket;
     const { num_tickets } = this.state;
@@ -44,7 +51,12 @@ class Ticket extends React.Component {
           <p>{`Quantity: ${num_tickets}`}</p>
           <p>{`Total: $${price * num_tickets}`}</p>
         </div>
-        <button className="ticket-buy">Register</button>
+        <button
+          className="ticket-buy"
+          onClick={this.registerTicket}
+        >
+          Register
+        </button>
       </div>
     );
   }

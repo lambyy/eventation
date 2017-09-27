@@ -5,7 +5,9 @@ const RegistrationForm = (props) => {
 
   const renderTickets = () => {
     const tickets = props.tickets.map( (ticket, idx) => (
-      <Ticket key={idx} ticket={ticket}/>
+      <Ticket key={idx}
+        ticket={ticket}
+        createRegistration={props.createRegistration}/>
     ));
 
     return tickets;

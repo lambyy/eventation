@@ -43,7 +43,7 @@ class EventShow extends React.Component {
   }
 
   render() {
-    const { event, errors, tickets } = this.props;
+    const { event, errors, tickets, createRegistration } = this.props;
 
     if (!event) {
       if (errors) {
@@ -69,7 +69,9 @@ class EventShow extends React.Component {
           contentLabel="Registration Modal"
         >
           <button onClick={this.handleCloseModal}>Close Modal</button>
-          <RegistrationForm tickets={tickets}/>
+          <RegistrationForm
+            tickets={tickets}
+            createRegistration={createRegistration}/>
         </Modal>
         <div className="event-backdrop">
           <img src={event.image_url}/>
