@@ -52,11 +52,12 @@ class Ticket extends React.Component {
           <p>{`Total: $${price * num_tickets}`}</p>
         </div>
         <button
-          className="ticket-buy"
+          className="ticket-buy green-button"
           onClick={this.registerTicket}
         >
           Register
         </button>
+        <div className="spacer"></div>
       </div>
     );
   }

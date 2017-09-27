@@ -16,7 +16,7 @@ class EventShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showModal: false };
+    this.state = { showModal: true };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
