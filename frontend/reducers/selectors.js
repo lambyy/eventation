@@ -23,8 +23,7 @@ export const selectEvents = (state, type) => {
         registeredEvents.push(state.entities.events[registration.event_id]);
       }
     });
-    console.log(registeredEvents);
-    return registeredEvents;
+    return [...new Set(registeredEvents)];
   }
 
 };
