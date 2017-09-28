@@ -23,7 +23,7 @@ class UpcomingEventItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showUpcomingModal: true };
+    this.state = { showUpcomingModal: false };
 
     this.handleOpenUpcomingModal = this.handleOpenUpcomingModal.bind(this);
     this.handleCloseUpcomingModal = this.handleCloseUpcomingModal.bind(this);
@@ -39,7 +39,7 @@ class UpcomingEventItem extends React.Component {
 
 
   render() {
-    const { event, registrations } = this.props;
+    const { event, registrations, removeRegistration } = this.props;
     return (
       <div className="upcoming-events">
         <Modal
@@ -50,6 +50,7 @@ class UpcomingEventItem extends React.Component {
           <UpcomingRegistrationsItem
             handleCloseModal={this.handleCloseUpcomingModal}
             registrations={registrations}
+            removeRegistration={removeRegistration}
             eventTitle={event.title}/>
         </Modal>
         <Link to={`/events/${event.id}`} className="event-item-image">

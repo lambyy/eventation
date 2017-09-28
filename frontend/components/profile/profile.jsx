@@ -24,11 +24,13 @@ class Profile extends React.Component {
   }
 
   renderContent() {
-    const { type, events, registrations } = this.props;
+    const { type, events, registrations, removeRegistration } = this.props;
     if (type === "organized") {
       return <OrganizedEvents events={events}/>;
     } else if (type === "tickets") {
-      return <UpcomingEvents events={events} registrations={registrations}/>;
+      return <UpcomingEvents events={events}
+        registrations={registrations}
+        removeRegistration={removeRegistration}/>;
     } else if (type === "bookmarks") {
       return <SavedEvents />;
     } else {

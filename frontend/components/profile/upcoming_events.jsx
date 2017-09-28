@@ -18,7 +18,8 @@ class UpcomingEvents extends React.Component {
       return (
         <UpcomingEventItem key={`upcoming-${event.id}`}
           event={event}
-          registrations={eventRegistrations}/>
+          registrations={eventRegistrations}
+          removeRegistration={this.props.removeRegistration}/>
       );
     });
 
