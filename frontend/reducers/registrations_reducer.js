@@ -10,9 +10,11 @@ const RegistrationsReducer = (state = {}, action) => {
   let newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      action.currentUser.registrations.forEach(registration => {
-        newState[registration.id] = registration;
-      });
+      if (action.currentUser !== null) {
+        action.currentUser.registrations.forEach(registration => {
+          newState[registration.id] = registration;
+        });
+      }
       return newState;
     case RECEIVE_REGISTRATION:
       newState[action.registration.id] = action.registration;
