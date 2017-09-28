@@ -1,8 +1,10 @@
 class Api::SessionsController < ApplicationController
   def create
-    @user = User.find_by_credentials(
-      params[:user][:email], params[:user][:password]
-    )
+    @user = User
+      .includes(:registrations, :tickets, :organized_events)
+      .find_by_credentials(
+        params[:user][:email], params[:user][:password]
+      )
 
     if @user
       signin!(@user)
