@@ -22,9 +22,8 @@ window.removeRegistration = removeRegistration;
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
-    const preloadedState = { session: { currentUser: window.currentUser }};
-    store = configureStore(preloadedState);
-    // store.dispatch(receiveCurrentUser(window.currentUser));
+    store = configureStore();
+    store.dispatch(receiveCurrentUser(window.currentUser));
 
     delete window.currentUser;
   } else {

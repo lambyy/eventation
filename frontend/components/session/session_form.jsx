@@ -68,7 +68,6 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("Unmounting");
     this.reset();
   }
 

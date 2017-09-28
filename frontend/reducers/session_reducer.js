@@ -7,12 +7,18 @@ const _nullUser = {
 
 const SessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
-  // let newState = merge({}, action.currentUser);
+  let newState = merge({}, action.currentUser);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      // newState.registrations = action.currentUser.registrations.map(
-      //   registration => registration.id
-      // );
+      if (action.currentUser !== null) {
+        newState.registrations = action.currentUser.registrations.map(
+          registration => registration.id
+        );
+        newState.organized_events = action.currentUser.organized_events.map(
+          event => event.id
+        );
+        return { currentUser: newState };
+      }
       return { currentUser: action.currentUser };
     default:
       return state;
