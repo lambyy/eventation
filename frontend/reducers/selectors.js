@@ -16,12 +16,14 @@ export const selectEvents = (state, type) => {
     return organizedEvents;
   } else if (type === "tickets") {
     let registeredEvents = [];
-    const registrations = [...new Set(currentUser.registeredEvents)];
-    registrations.forEach( eventId => {
-      if (state.entities.events[eventId]) {
-        registeredEvents.push(state.entities.events[eventId]);
+    const registrations = state.entities.registrations;
+    // const registrations = [...new Set(currentUser.registeredEvents)];
+    values(registrations).forEach( registration => {
+      if (state.entities.events[registration.event_id]) {
+        registeredEvents.push(state.entities.events[registration.event_id]);
       }
     });
+    console.log(registeredEvents);
     return registeredEvents;
   }
 
@@ -29,6 +31,7 @@ export const selectEvents = (state, type) => {
 
 export const selectTickets = (state, ticketsArray) => {
   let tickets = [];
+  if (!ticketsArray) return tickets;
   for (let i = 0; i < ticketsArray.length; i++) {
     const id = ticketsArray[i];
     tickets[i] = state.entities.tickets[id];

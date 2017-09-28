@@ -29,14 +29,14 @@ class EventForm extends React.Component {
   }
 
   componentWillMount() {
+    console.log("MOUNTING");
     window.scrollTo(0, 0);
     this.props.clearErrors();
-    if (this.props.eventId && !this.props.event) {
-      this.props.requestEvent(this.props.eventId);
-    }
+    this.props.requestEvent(this.props.eventId);
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("component will receive props");
     window.scrollTo(0, 0);
     if (nextProps.location.pathname !== this.props.location.pathname) {
       if (!nextProps.event && nextProps.eventId) {
