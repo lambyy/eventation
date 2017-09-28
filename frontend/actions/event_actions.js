@@ -31,8 +31,8 @@ const receiveEventErrors = (errors) => ({
   errors
 });
 
-export const requestAllEvents = () => dispatch => (
-  getEvents()
+export const requestAllEvents = (filter) => dispatch => (
+  getEvents(filter)
     .then(events => dispatch(receiveAllEvents(events)))
     .fail(errors => dispatch(receiveEventErrors(errors.responseJSON)))
 );

@@ -7,7 +7,7 @@ class EventIndex extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestAllEvents();
+    this.props.requestAllEvents("all");
   }
 
   render() {

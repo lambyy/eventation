@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestAllEvents: () => dispatch(requestAllEvents())
+  requestAllEvents: (filter) => dispatch(requestAllEvents(filter))
 });
 
 export default connect(

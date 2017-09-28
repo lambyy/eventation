@@ -11,12 +11,13 @@ const SessionReducer = (state = _nullUser, action) => {
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       if (action.currentUser !== null) {
-        newState.registrations = action.currentUser.registrations.map(
-          registration => registration.id
+        newState.registeredEvents = action.currentUser.registrations.map(
+          registration => registration.event_id
         );
-        newState.organized_events = action.currentUser.organized_events.map(
-          event => event.id
-        );
+        delete newState.registrations;
+        // newState.organized_events = action.currentUser.organized_events.map(
+        //   event => event.id
+        // );
         return { currentUser: newState };
       }
       return { currentUser: action.currentUser };
