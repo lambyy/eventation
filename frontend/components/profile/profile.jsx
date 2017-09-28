@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import OrganizedEvents from './organized_events';
+import UpcomingEvents from './upcoming_events';
+import SavedEvents from './saved_events';
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
 
     console.log(props);
+
+    this.renderContent = this.renderContent.bind(this);
   }
 
   componentWillMount() {
@@ -20,10 +25,22 @@ class Profile extends React.Component {
 
   }
 
+  renderContent() {
+    const { type } = this.props;
+    if (type === "organized") {
+      return <OrganizedEvents />;
+    } else if (type === "tickets") {
+      return <UpcomingEvents />;
+    } else if (type === "bookmarks") {
+      return <SavedEvents />;
+    } else {
+      return null;
+    }
+  }
+
+
   render() {
     const { currentUser } = this.props;
-    console.log(this.props.type);
-    console.log(this.props.events);
 
     return (
       <div className="user-profile">
@@ -35,7 +52,7 @@ class Profile extends React.Component {
           <Link to="/profile/organized">Organized Events</Link>
         </div>
         <div className='tab-content'>
-
+          {this.renderContent()}
         </div>
       </div>
     );
