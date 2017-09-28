@@ -7,11 +7,20 @@ class UpcomingEvents extends React.Component {
     super(props);
   }
 
-
   render() {
-    const eventItems = this.props.events.map( event => (
-      <UpcomingEventItem key={`upcoming-${event.id}`} event={event} />
-    ));
+    const eventItems = this.props.events.map( event => {
+      let eventRegistrations = [];
+      this.props.registrations.forEach ( registration => {
+        if (registration.event_id === event.id) {
+          eventRegistrations.push(registration);
+        }
+      });
+      return (
+        <UpcomingEventItem key={`upcoming-${event.id}`}
+          event={event}
+          registrations={eventRegistrations}/>
+      );
+    });
 
     return (
       <div className="upcoming">

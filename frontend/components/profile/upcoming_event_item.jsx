@@ -12,6 +12,7 @@ class UpcomingEventItem extends React.Component {
 
 
   render() {
+    console.log(this.props.registrations);
     const { event } = this.props;
     return (
       <div className="upcoming-events">
