@@ -18,17 +18,15 @@ class Profile extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.events) {
-      console.log("no events");
-      this.props.requestAllEvents(this.props.type);
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.props.requestAllEvents(nextProps.type);
     }
-
   }
 
   renderContent() {
     const { type, events } = this.props;
     if (type === "organized") {
-      return <OrganizedEvents event={events}/>;
+      return <OrganizedEvents events={events}/>;
     } else if (type === "tickets") {
       return <UpcomingEvents events={events}/>;
     } else if (type === "bookmarks") {
