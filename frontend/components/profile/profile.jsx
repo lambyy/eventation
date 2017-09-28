@@ -26,11 +26,11 @@ class Profile extends React.Component {
   }
 
   renderContent() {
-    const { type } = this.props;
+    const { type, events } = this.props;
     if (type === "organized") {
-      return <OrganizedEvents />;
+      return <OrganizedEvents event={events}/>;
     } else if (type === "tickets") {
-      return <UpcomingEvents />;
+      return <UpcomingEvents events={events}/>;
     } else if (type === "bookmarks") {
       return <SavedEvents />;
     } else {
@@ -40,16 +40,22 @@ class Profile extends React.Component {
 
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, type } = this.props;
 
     return (
       <div className="user-profile">
         <h1>{currentUser.first_name + " " + currentUser.last_name}</h1>
 
         <div className='tabs'>
-          <Link to="/profile/tickets">Upcoming Events</Link>
-          <Link to="/profile/bookmarks">Saved Events</Link>
-          <Link to="/profile/organized">Organized Events</Link>
+          <Link to="/profile/tickets"
+            className={ (type === "tickets") ? "active" : " "}
+            >UPCOMING EVENTS</Link>
+          <Link to="/profile/bookmarks"
+            className={ (type === "bookmarks") ? "active" : " "}
+            >SAVED EVENTS</Link>
+          <Link to="/profile/organized"
+            className={ (type === "organized") ? "active" : " "}
+            >ORGANIZED EVENTS</Link>
         </div>
         <div className='tab-content'>
           {this.renderContent()}

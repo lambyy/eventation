@@ -1,0 +1,31 @@
+.user-profile {
+
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    margin: 30px auto;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid $light-grey;
+
+    a {
+      font-size: 14px;
+      padding: 15px 30px;
+    }
+
+    .active {
+      border-bottom: 4px solid $light-blue;
+    }
+
+  }
+
+  .tab-content {
+    padding: 20px;
+    background-color: $lightest-grey;
+  }
+
+}
