@@ -78,6 +78,7 @@ class EventShow extends React.Component {
         >
           <RegistrationForm
             tickets={tickets}
+            eventTitle={event.title}
             createRegistration={createRegistration}
             handleCloseModal={this.handleCloseModal}/>
         </Modal>

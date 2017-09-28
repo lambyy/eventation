@@ -7,6 +7,7 @@ const RegistrationForm = (props) => {
     const tickets = props.tickets.map( (ticket, idx) => (
       <Ticket key={idx}
         ticket={ticket}
+        eventTitle={props.eventTitle}
         createRegistration={props.createRegistration}/>
     ));
 
