@@ -11,7 +11,7 @@ const customStyles = {
     position: 'absolute',
     margin: "auto",
     width: '500px',
-    height: '300px'
+    height: '350px'
   }
 };
 
@@ -23,13 +23,14 @@ class Ticket extends React.Component {
       ticket_id: this.props.ticket.id,
       num_tickets: 0,
       event_id: this.props.ticket.event_id,
-      showPurchaseModal: true
+      showPurchaseModal: false
     };
 
     this.update = this.update.bind(this);
 
     this.handleOpenPurchaseModal = this.handleOpenPurchaseModal.bind(this);
     this.handleClosePurchaseModal = this.handleClosePurchaseModal.bind(this);
+    this.closeAllModal = this.closeAllModal.bind(this);
 
     this.renderTicketOptions = this.renderTicketOptions.bind(this);
     this.registerTicket = this.registerTicket.bind(this);
@@ -46,6 +47,11 @@ class Ticket extends React.Component {
 
   handleClosePurchaseModal() {
     this.setState({ showPurchaseModal: false });
+  }
+
+  closeAllModal() {
+    this.handleClosePurchaseModal();
+    this.props.closeTicketModal();
   }
 
   renderTicketOptions() {
@@ -77,19 +83,22 @@ class Ticket extends React.Component {
           style={customStyles}
           contentLabel="Purchase Modal"
         >
-          <button className="fa fa-times-circle-o"
-            onClick={this.handleClosePurchaseModal}>
-          </button>
-          <h3>{`You're going to ${this.props.eventTitle}!`}</h3>
-          <p>Your order has been saved to My Tickets</p>
-          <div className="order-summary">
-            <h4>Order Summary</h4>
-            <p>TYPE</p>
-            <p>{name}</p>
-            <p>QUANTITY</p>
-            <p>{num_tickets}</p>
+          <div className="purchase">
+            <button className="fa fa-times-circle-o"
+              onClick={this.closeAllModal}>
+            </button>
+            <h3>{`You're going to ${this.props.eventTitle}!`}</h3>
+            <p>Your order has been saved to My Tickets</p>
+            <div className="order-summary">
+              <h4>Order Summary</h4>
+              <h6>TYPE</h6>
+              <h6>QUANTITY</h6>
+              <p>{name}</p>
+              <p>{num_tickets}</p>
+            </div>
+            <Link to="/profile/tickets"
+               className="solid-blue-button">GO TO MY TICKETS</Link>
           </div>
-          <Link to="/profile/tickets">GO TO MY TICKETS</Link>
         </Modal>
         <h3 className="ticket-name">{name}</h3>
         <p className="ticket-price">{`$${price}`}</p>

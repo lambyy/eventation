@@ -127,12 +127,24 @@ button:focus, input[type="submit"]:focus {
 
 .blue-button {
 	background-color: $white;
-	color: $blue;
-	border: 2px solid $blue;
+	color: $light-blue;
+	border: 2px solid $light-blue;
 	border-radius: 22px;
 }
 
 .blue-button:hover {
-	background: $blue;
+	background: $light-blue;
 	color: $white;
+}
+
+.solid-blue-button {
+	font-weight: 600;
+	border: none;
+	border-radius: 3px;
+	background: $light-blue;
+	color: $white;
+}
+
+.solid-blue-button:hover {
+	background-color: darken($light-blue, 10%);
 }

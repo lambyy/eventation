@@ -8,6 +8,7 @@ const RegistrationForm = (props) => {
       <Ticket key={idx}
         ticket={ticket}
         eventTitle={props.eventTitle}
+        closeTicketModal={props.handleCloseModal}
         createRegistration={props.createRegistration}/>
     ));
 
