@@ -18,8 +18,10 @@ const SessionButtons = (props) => {
   if (currentUser) {
     return (
       <div className="nav-user">
-        <span className="clickable">{currentUser.first_name.toUpperCase() + " " +
-          currentUser.last_name.toUpperCase()}</span>
+        <Link to="/profile/tickets" >
+          {currentUser.first_name.toUpperCase() + " " +
+            currentUser.last_name.toUpperCase()}
+        </Link>
         {logoutRedirect()}
       </div>
     );
