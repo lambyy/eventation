@@ -12,7 +12,8 @@ const customStyles = {
   content: {
     position: "absolute",
     margin: "auto",
-    width: '730px',
+    width: '450px',
+    height: '350px',
     backgroundColor: '#f8f8fa',
     borderRadius: "6px"
   }

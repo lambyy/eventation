@@ -1,0 +1,81 @@
+.registration-item {
+
+ h3 {
+   font-size: 26px;
+   font-weight: 600;
+   padding: 35px 0;
+   border-bottom: 2px solid $light-grey;
+ }
+
+ p {
+   font-weight: 600;
+   margin: 10px 0;
+ }
+
+ .order-summary {
+   position: relative;
+   display: grid;
+   grid-template-rows: 40px 30px auto;
+   grid-template-columns: 1fr 1fr 60px;
+   grid-auto-flow: row;
+   border: 1px solid rgba(0, 0, 0, 0.1);
+   border-radius: 4px;
+
+   h4 {
+     grid-area: 1 / 1 / 1 / span 3;
+     background-color: $light-grey;
+     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+     padding: 10px;
+   }
+
+   h4, h6 {
+     color: $light-blue;
+   }
+
+   h6 {
+     font-size: 14px;
+     font-weight: 600;
+   }
+
+   h6, p {
+     padding: 10px 10px 5px 10px;
+   }
+
+   p {
+     font-weight: 300;
+     margin: 0;
+     padding: 15px 10px;
+   }
+
+   .summary {
+      position: relative;
+      grid-column: 1 / span 3;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr auto 60px;
+      border-top: 1px solid $light-grey;
+
+      .ticket-name {
+        grid-column: 1 / span 1;
+      }
+      .ticket-num {
+        grid-column: 2 / span 1;
+      }
+      .solid-blue-button {
+        position: absolute;
+        top: 7px;
+        right: 15px;
+        margin: 0;
+        padding: 5px 15px;
+      }
+
+   }
+ }
+
+ .solid-blue-button {
+   position: absolute;
+   font-size: 14px;
+   margin: 10px 0;
+   padding: 9px 15px;
+ }
+}
