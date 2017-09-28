@@ -8,6 +8,13 @@ class OrganizedEvents extends React.Component {
   }
 
   render() {
+    if (!this.props.events.length) {
+      return (
+        <div className="No Events">EMPTY</div>
+      );
+    }
+
+
     const eventItems = this.props.events.map( event => (
       <div className="organized-event" key={`organized-${event.id}`}>
         <Link to={`/events/${event.id}`} className="event-item-image">

@@ -36,16 +36,16 @@ class EventForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("component will receive props");
     window.scrollTo(0, 0);
     if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.props.clearErrors();
       if (!nextProps.event && nextProps.eventId) {
         this.props.requestEvent(nextProps.eventId);
       }
+    }
+    if (nextProps.location.pathname === "/events/create") {
       this.props.clearErrors();
-      if (nextProps.location.pathname === "/events/create") {
-        this.setState(this.defaultState());
-      }
+      this.setState(this.defaultState());
     }
 
     if (nextProps.event) {
