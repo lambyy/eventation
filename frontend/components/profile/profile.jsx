@@ -9,12 +9,10 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    // console.log(this.props.type);
     this.props.requestAllEvents(this.props.type);
   }
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps.type);
     if (!nextProps.events) {
       console.log("no events");
       this.props.requestAllEvents(this.props.type);
@@ -24,6 +22,8 @@ class Profile extends React.Component {
 
   render() {
     const { currentUser } = this.props;
+    console.log(this.props.type);
+    console.log(this.props.events);
 
     return (
       <div className="user-profile">

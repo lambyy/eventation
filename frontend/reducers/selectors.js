@@ -22,7 +22,6 @@ export const selectEvents = (state, type) => {
         registeredEvents.push(state.entities.events[eventId]);
       }
     });
-    console.log(registeredEvents);
     return registeredEvents;
   }
 

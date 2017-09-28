@@ -7,3 +7,5 @@ end
 # json.organized_events do
 #   json.array! user.organized_events, :id
 # end
+
+# remove comment

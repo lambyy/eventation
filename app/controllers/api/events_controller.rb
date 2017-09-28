@@ -3,7 +3,15 @@ class Api::EventsController < ApplicationController
   before_action :require_owner, only: [:update, :destroy]
 
   def index
-    @events = Event.all
+    if params.include?(:tickets)
+      @events = current_user.registered_events
+    elsif params.include?(:organized)
+      @events = Event.where(organizer_id: current_user.id)
+    elsif params.include?(:bookmarks)
+      puts "bookmarks"
+    else
+      @events = Event.all
+    end
     render '/api/events/index'
   end
 
