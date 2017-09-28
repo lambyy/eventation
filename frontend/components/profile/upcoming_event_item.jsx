@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import EventItemDigest from '../event/event_index_item/event_item_digest';
+import UpcomingRegistrationsItem from './upcoming_registrations_item';
 
 const customStyles = {
   overlay: {
@@ -21,7 +22,7 @@ class UpcomingEventItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showUpcomingModal: false };
+    this.state = { showUpcomingModal: true };
 
     this.handleOpenUpcomingModal = this.handleOpenUpcomingModal.bind(this);
     this.handleCloseUpcomingModal = this.handleCloseUpcomingModal.bind(this);
@@ -37,7 +38,7 @@ class UpcomingEventItem extends React.Component {
 
 
   render() {
-    const { event } = this.props;
+    const { event, registrations } = this.props;
     return (
       <div className="upcoming-events">
         <Modal
@@ -45,7 +46,10 @@ class UpcomingEventItem extends React.Component {
           style={customStyles}
           contentLabel="Upcoming Events Modal"
         >
-          <button className="fa fa-times-circle-o" onClick={this.handleCloseUpcomingModal}></button>
+          <UpcomingRegistrationsItem
+            handleCloseModal={this.handleCloseUpcomingModal}
+            registrations={registrations}
+            eventTitle={event.title}/>
         </Modal>
         <Link to={`/events/${event.id}`} className="event-item-image">
           <img src={event.image_url}/>
