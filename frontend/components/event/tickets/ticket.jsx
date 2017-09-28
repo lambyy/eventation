@@ -32,8 +32,10 @@ class Ticket extends React.Component {
 
   registerTicket(e) {
     e.preventDefault();
-    console.log(this.state);
-    this.props.createRegistration(this.state);
+    if (this.state.num_tickets > 0) {
+      console.log(this.state);
+      this.props.createRegistration(this.state);
+    }
   }
 
   render() {

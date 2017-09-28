@@ -7,8 +7,16 @@ import EventLocation from './event_show/event_location';
 import RegistrationForm from '../registrations/registration_form';
 
 const customStyles = {
+  overlay: {
+    position: "fixed",
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+  },
   content: {
-    backgroundColor: '#f8f8fa'
+    position: "absolute",
+    margin: "auto",
+    width: '730px',
+    backgroundColor: '#f8f8fa',
+    borderRadius: "6px"
   }
 };
 
@@ -16,7 +24,7 @@ class EventShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showModal: true };
+    this.state = { showModal: false };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -68,10 +76,10 @@ class EventShow extends React.Component {
           style={customStyles}
           contentLabel="Registration Modal"
         >
-          <button onClick={this.handleCloseModal}>Close Modal</button>
           <RegistrationForm
             tickets={tickets}
-            createRegistration={createRegistration}/>
+            createRegistration={createRegistration}
+            handleCloseModal={this.handleCloseModal}/>
         </Modal>
         <div className="event-backdrop">
           <img src={event.image_url}/>

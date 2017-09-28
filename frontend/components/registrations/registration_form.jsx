@@ -15,6 +15,7 @@ const RegistrationForm = (props) => {
 
   return (
     <div className="registration-form">
+      <button className="fa fa-times-circle-o" onClick={props.handleCloseModal}></button>
       <h3>Register</h3>
       {renderTickets()}
     </div>
