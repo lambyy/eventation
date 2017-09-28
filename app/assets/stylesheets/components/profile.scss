@@ -26,6 +26,10 @@
   .tab-content {
     padding: 20px;
     background-color: $lightest-grey;
+
+    .no-events {
+      height: 60vh;
+    }
   }
 
 }

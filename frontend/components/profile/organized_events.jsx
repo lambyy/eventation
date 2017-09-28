@@ -10,7 +10,7 @@ class OrganizedEvents extends React.Component {
   render() {
     if (!this.props.events.length) {
       return (
-        <div className="No Events">EMPTY</div>
+        <div className="no-events"></div>
       );
     }
 

@@ -37,3 +37,7 @@ export const selectTickets = (state, ticketsArray) => {
   }
   return tickets;
 };
+
+export const selectRegistrations = (state) => (
+  values(state.entities.registrations)
+);
