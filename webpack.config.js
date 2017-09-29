@@ -5,7 +5,7 @@ var plugins = [];
 var devPlugins = [];
 
 var prodPlugins = [
-  new webpack.DefindPlugin({
+  new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': JSON.stringify('production')
     }
