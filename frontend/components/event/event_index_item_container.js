@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
-import { requestAllEvents } from '../../actions/event_actions';
-import { selectAllEvents } from '../../reducers/selectors';
-import EventIndex from './event_index';
+// import { requestAllEvents } from '../../actions/event_actions';
+import { hasBookmark } from '../../reducers/selectors';
+import EventIndexItem from './event_index_item';
 
-const mapStateToProps = (state) => ({
-  events: selectAllEvents(state)
+const mapStateToProps = (state, props) => ({
+  bookmarked: hasBookmark(state, props.event.id)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestAllEvents: () => dispatch(requestAllEvents())
+
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EventIndex);
+)(EventIndexItem);

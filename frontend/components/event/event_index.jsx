@@ -1,5 +1,5 @@
 import React from 'react';
-import EventIndexItem from './event_index_item';
+import EventIndexItemContainer from './event_index_item_container';
 
 class EventIndex extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class EventIndex extends React.Component {
     const { events } = this.props;
 
     const eventsList = events.map( event =>
-      <EventIndexItem key={event.id} event={event} />
+      <EventIndexItemContainer key={event.id} event={event} />
     );
 
     return (

@@ -4,11 +4,6 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { receiveCurrentUser } from './actions/session_actions';
 
-import { createBookmark, removeBookmark } from './actions/bookmark_actions';
-window.createBookmark = createBookmark;
-window.removeBookmark = removeBookmark;
-
-
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
@@ -26,5 +21,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });
-
-// todo: remove testing stuff
