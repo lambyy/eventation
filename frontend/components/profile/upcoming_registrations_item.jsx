@@ -10,7 +10,7 @@ const customStyles = {
     position: 'absolute',
     margin: "auto",
     width: '400px',
-    height: '150px'
+    height: '200px'
   }
 };
 
@@ -54,13 +54,15 @@ class UpcomingRegistrationsItem extends React.Component {
           style={customStyles}
           contentLabel="Confirmation Modal"
         >
-          <div>
-            {`Return ${registration.num_tickets} ${registration.name} tickets to ${this.props.eventTitle}?`}
+          <div className="confirmation-modal">
+            <p>
+              {`Return (${registration.num_tickets}) ${registration.name} tickets to ${this.props.eventTitle}?`}
+            </p>
+            <button className="green-button"
+              onClick={this.handleConfirmation(registration.id)}>Confirm</button>
+            <button className="solid-blue-button"
+              onClick={this.handleCloseConfirmationModal}>Go Back</button>
           </div>
-          <button className="green-button"
-            onClick={this.handleConfirmation(registration.id)}>Confirm</button>
-          <button className="solid-blue-button"
-            onClick={this.handleCloseConfirmationModal}>Go Back</button>
         </Modal>
         <p className="ticket-name">{registration.name}</p>
         <p className="ticket-num">{registration.num_tickets}</p>
@@ -79,7 +81,7 @@ class UpcomingRegistrationsItem extends React.Component {
         <button className="fa fa-times-circle-o" onClick={handleCloseModal}></button>
           <h3>{`Your registrations to ${eventTitle}!`}</h3>
           <div className="order-summary">
-            <h4>Order Summary</h4>
+            <h4>Tickets Summary</h4>
             <h6>TYPE</h6>
             <h6>QUANTITY</h6>
             <p className="spacer"></p>

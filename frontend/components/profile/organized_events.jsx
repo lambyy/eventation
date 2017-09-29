@@ -8,11 +8,11 @@ class OrganizedEvents extends React.Component {
   }
 
   render() {
-    if (!this.props.events.length) {
-      return (
-        <div className="no-events"></div>
-      );
-    }
+    // if (!this.props.events.length) {
+    //   return (
+    //     <div className="no-events"></div>
+    //   );
+    // }
 
 
     const eventItems = this.props.events.map( event => (

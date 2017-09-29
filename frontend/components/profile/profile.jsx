@@ -60,6 +60,7 @@ class Profile extends React.Component {
         <div className='tab-content'>
           {this.renderContent()}
         </div>
+        <div className="no-events">something</div>
       </div>
     );
   }
