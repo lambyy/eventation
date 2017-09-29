@@ -8,8 +8,6 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
-
     this.renderContent = this.renderContent.bind(this);
   }
 

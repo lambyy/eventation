@@ -148,3 +148,7 @@ button:focus, input[type="submit"]:focus {
 .solid-blue-button:hover {
 	background-color: darken($light-blue, 10%);
 }
+
+.fa:hover {
+	cursor: pointer;
+}
