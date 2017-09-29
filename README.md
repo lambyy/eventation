@@ -36,3 +36,9 @@ Events can be filtered by their categories and event types when browsing, allowi
 Users can bookmark and unbookmark events while browsing and on the event show page. Their bookmarks can be viewed in their profile page.
 
 ![](https://github.com/lambyy/eventation/blob/master/app/assets/images/bookmarks.png)
+
+## Future Features
+
+* Events should be able to be searched by their names
+* Event locations should show up on a map so that users can find events near them
+* Tickets and Registrations should have a payment method
