@@ -12,6 +12,7 @@ class EventBrowse extends React.Component {
     };
 
     this.updateQuery = this.updateQuery.bind(this);
+    this.renderEvents = this.renderEvents.bind(this);
   }
 
   componentWillMount() {
@@ -47,18 +48,38 @@ class EventBrowse extends React.Component {
     };
   }
 
+  renderEvents() {
+    if (this.props.events.length === 0) {
+      return (
+        <div>No Events Found</div>
+      );
+    } else {
+      const events = this.props.events.map( event => (
+        <EventIndexItemContainer key={event.id} event={event} />
+      ));
+      return events;
+    }
+  }
+
   render() {
-    console.log(this.props.events);
+    const { category, event_type } = this.state;
+    let filterStr = "ALL";
+    if (category && event_type) {
+      filterStr = `${category.toUpperCase()}, ${event_type.toUpperCase()}`;
+    } else if (category) {
+      filterStr = `${category.toUpperCase()}`;
+    } else if (event_type) {
+      filterStr = `${event_type.toUpperCase()}`;
+    }
+
     return (
       <div className="event-browse">
         <EventBrowseFilter
           updateQuery={this.updateQuery}
           state={this.state}/>
         <div className="browse-index">
-
-          {this.props.events.map( event => (
-            <EventIndexItemContainer key={event.id} event={event} />
-          ))}
+          <div>Filter Events by: <h3>{filterStr}</h3></div>
+          {this.renderEvents()}
         </div>
 
       </div>

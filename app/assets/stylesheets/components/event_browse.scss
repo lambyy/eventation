@@ -44,6 +44,16 @@ $item-image-width-long: ($item-image-height-long + 30px) * 2.1;
     grid-area: 1 / 2;
     margin: 30px 0 30px 30px;
 
+    div, h3 {
+      font-size: 20px;
+      padding: 10px;
+    }
+
+    h3 {
+      display: inline;
+      font-weight: 600;
+    }
+
     .event-index-item-long {
       display: grid;
       grid-template-rows: $item-image-height-long 30px;
