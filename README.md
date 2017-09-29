@@ -13,6 +13,7 @@ Eventation is a single-page Eventbrite clone built using Ruby on Rails, React/Re
 Users can create custom events with their desired event image, location, date and time. Using a single form, users are able to create new events and with multiple tickets simultaneously. The same form is prepopulated when users want to update a pre-existing event. 
 
 ![](https://github.com/lambyy/eventation/blob/master/app/assets/images/event_form.png)
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/create_tickets.png)
 
 
 One of the biggest hurdles when implementing the event form was the creation of an event in conjunction with tickets as these are two separate tables in the Rails backend. I was able to implement this by creating Ticket components on the frontend to store individual ticket information in an array in the local state of the Event Form component. When an event is created, all the event and ticket information is sent to the backend as one package. I created a method for Events to first check if all the information sent will create valid Event and Ticket models. If valid, the method will create the Event and all its associated Tickets. I also wrote a similar method to update an exisiting Event and create or destroy its associated Tickets to reflect the data sent by the Event Form.
