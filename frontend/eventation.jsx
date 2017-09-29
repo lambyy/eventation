@@ -4,9 +4,9 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { receiveCurrentUser } from './actions/session_actions';
 
-import { postBookmark, deleteBookmark } from './util/bookmark_util';
-window.postBookmark = postBookmark;
-window.deleteBookmark = deleteBookmark;
+import { createBookmark, removeBookmark } from './actions/bookmark_actions';
+window.createBookmark = createBookmark;
+window.removeBookmark = removeBookmark;
 
 
 document.addEventListener("DOMContentLoaded", () => {
