@@ -24,7 +24,21 @@ class EventIndexItem extends React.Component {
   }
 
   render() {
-    const { event, bookmarked } = this.props;
+    const { event, bookmarked, location } = this.props;
+
+    if (location.pathname === "/events/browse") {
+      return (
+        <div className="event-index-item-long">
+          <Link to={`/events/${event.id}`} className="event-item-image">
+            <img src={event.image_url}/>
+          </Link>
+          <Link to={`/events/${event.id}`}>
+            <EventItemDigest event={event}/>
+          </Link>
+          <EventItemExtra bookmarked={bookmarked} toggleBookmark={this.toggleBookmark}/>
+        </div>
+      );
+    }
 
     return (
       <div className="event-index-item">
