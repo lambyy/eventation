@@ -10,6 +10,7 @@ const mapStateToProps = (state, {match}) => {
   const tickets = (event && event.tickets) ? selectTickets(state, event.tickets) : [];
 
   return ({
+    currentUser: state.session.currentUser,
     event,
     tickets,
     eventId: match.params.eventId,

@@ -43,7 +43,12 @@ class EventShow extends React.Component {
   }
 
   handleOpenModal() {
-    this.setState({ showModal: true });
+    if (this.props.currentUser) {
+      this.setState({ showModal: true });
+    } else {
+      this.props.history.push('/login');
+    }
+
   }
 
   handleCloseModal() {
