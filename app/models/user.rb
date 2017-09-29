@@ -39,6 +39,15 @@ class User < ApplicationRecord
     through: :tickets,
     source: :event
 
+  has_many :bookmarks,
+    foreign_key: :user_id,
+    class_name: :Bookmark,
+    dependent: :destroy
+
+  has_many :bookmarked_events,
+    through: :bookmarks,
+    source: :event
+
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
     user && user.is_password?(password) ? user : nil
