@@ -25,17 +25,21 @@ class Api::EventsController < ApplicationController
   end
 
   def create
-    ticket_errors = Ticket.check_tickets(event_params)
+    if event_params.include?(:tickets)
+      ticket_errors = Ticket.check_tickets(event_params)
 
-    if ticket_errors == []
-      @event = Event.create_event_with_tickets(event_params, current_user)
-      if @event.is_a?(Event)
-        render '/api/events/show'
+      if ticket_errors == []
+        @event = Event.create_event_with_tickets(event_params, current_user)
+        if @event.is_a?(Event)
+          render '/api/events/show'
+        else
+          render json: @event, status: 422
+        end
       else
-        render json: @event, status: 422
+        render json: ticket_errors, status: 422
       end
     else
-      render json: ticket_errors, status: 422
+      render json: ["Event must have at least ONE ticket"], status: 422
     end
   end
 

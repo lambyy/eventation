@@ -29,7 +29,6 @@ class EventForm extends React.Component {
   }
 
   componentWillMount() {
-    console.log("MOUNTING");
     window.scrollTo(0, 0);
     this.props.clearErrors();
     this.props.requestEvent(this.props.eventId);
@@ -42,10 +41,9 @@ class EventForm extends React.Component {
       if (!nextProps.event && nextProps.eventId) {
         this.props.requestEvent(nextProps.eventId);
       }
-    }
-    if (nextProps.location.pathname === "/events/create") {
-      this.props.clearErrors();
-      this.setState(this.defaultState());
+      if (nextProps.location.pathname === "/events/create") {
+        this.setState(this.defaultState());
+      }
     }
 
     if (nextProps.event) {
@@ -57,6 +55,9 @@ class EventForm extends React.Component {
     }
 
     if (nextProps.errors == "Event does not exist") {
+      if (nextProps.location.pathname === "/events/create") {
+        this.props.clearErrors();
+      }
       this.setState(this.defaultState());
     }
   }

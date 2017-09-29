@@ -4,6 +4,8 @@ class Api::RegistrationsController < ApplicationController
     @registration.user_id = current_user.id
 
     if @registration.save
+      @registration.ticket.quantity -= @registration.num_tickets
+      @registration.ticket.save
       render '/api/registrations/show'
     else
       render json: @registration.errors.full_messages, status: 422

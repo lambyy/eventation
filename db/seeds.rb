@@ -54,7 +54,7 @@ description:"Japanese Tea Ceremony Class.
  For more information, please contact learn-more@chanoyu.com",
  category: "Food&Drink", event_type: "Class"})
 
-t1 = Ticket.create({event_id: e3.id, name: "Begginer", quantity: 20, price: 50})
+t1 = Ticket.create({event_id: e3.id, name: "Beginner", quantity: 20, price: 50})
 
 # --------------------------------------------------------------------------------------------------------------------
 
