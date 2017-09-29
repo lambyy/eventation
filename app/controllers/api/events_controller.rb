@@ -9,8 +9,19 @@ class Api::EventsController < ApplicationController
       @events = Event.where(organizer_id: current_user.id)
     elsif params.include?(:bookmarks)
       @events = current_user.bookmarked_events
+    elsif params.include?(:query)
+      if params[:query][:category] != "" && params[:query][:event_type] != ""
+        @events = Event.where(category: params[:query][:category])
+                       .where(event_type: params[:query][:event_type])
+      elsif params[:query][:category] != ""
+        @events = Event.where(category: params[:query][:category])
+      elsif params[:query][:event_type] != ""
+        @events = Event.where(event_type: params[:query][:event_type])
+      else
+        @events = Event.all
+      end
     else
-      @events = Event.all
+      @events = Event.all.limit(12)
     end
     render '/api/events/index'
   end
