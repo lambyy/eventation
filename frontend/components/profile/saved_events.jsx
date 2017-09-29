@@ -11,7 +11,6 @@ class SavedEvents extends React.Component {
       <EventIndexItemContainer key={event.id} event={event}/>
     );
 
-    console.log(this.props.events);
     return (
       <div className="saved-events">
         {eventItems}

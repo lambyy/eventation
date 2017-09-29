@@ -113,7 +113,6 @@ class EventForm extends React.Component {
   deleteTicket(idx) {
     let tickets = this.state.tickets.slice();
     tickets.splice(idx, 1);
-    console.log(tickets);
 
     this.setState({
       tickets,

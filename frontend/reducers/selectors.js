@@ -79,7 +79,7 @@ export const filterEvents = (state, location) => {
         }
       }
     });
-    console.log(filtered);
+
     return filtered;
   }
   return values(state.entities.events);
