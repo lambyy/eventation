@@ -22,13 +22,13 @@ const EventBrowseFilter = ({ state, updateQuery }) => {
   return (
     <div className="filters">
       <div className="category-filters">
-        CATEGORY
+        <h2>CATEGORY</h2>
         <ul>
           {categoryFilter}
         </ul>
       </div>
       <div className="event-type-filters">
-        EVENT TYPE
+        <h2>EVENT TYPE</h2>
         <ul>
           {eventTypeFilter}
         </ul>

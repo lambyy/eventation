@@ -53,9 +53,12 @@ class EventBrowse extends React.Component {
         <EventBrowseFilter
           updateQuery={this.updateQuery}
           state={this.state}/>
-        {this.props.events.map( event => (
-          <EventIndexItemContainer key={event.id} event={event} />
-        ))}
+        <div className="browse-index">
+
+          {this.props.events.map( event => (
+            <EventIndexItemContainer key={event.id} event={event} />
+          ))}
+        </div>
 
       </div>
     );
