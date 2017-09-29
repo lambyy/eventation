@@ -66,7 +66,7 @@ Impress your family and friends with delicious and flavourful culinary dishes fr
 For a limited time, take the introductory lesson to our First Class Cooking course for free.",
 category: "Food&Drink", event_type: "Class"})
 
-t2 = Ticket.create({event_id: e4.id, name: "Introductory", quantity: 25, price: 0})
+Ticket.create({event_id: e4.id, name: "Introductory", quantity: 25, price: 0})
 
 # --------------------------------------------------------------------------------------------------------------------
 
@@ -146,7 +146,7 @@ Please RSVP by May 17th.
 Registry: www.kathleneandtrevor@weddingregistry.com",
 category: "Other", event_type: "Party"})
 
-Ticket.create({event_id: e10.id, name: "RSVP", quantity: 200, price: 0})
+t2 = Ticket.create({event_id: e10.id, name: "RSVP", quantity: 200, price: 0})
 
 # --------------------------------------------------------------------------------------------------------------------
 
@@ -187,3 +187,8 @@ Registration.create({user_id: u1.id, ticket_id: t2.id, num_tickets: 2})
 Registration.create({user_id: u1.id, ticket_id: t3.id, num_tickets: 1})
 Registration.create({user_id: u1.id, ticket_id: t4.id, num_tickets: 4})
 Registration.create({user_id: u1.id, ticket_id: t5.id, num_tickets: 6})
+
+Bookmark.create({user_id: u1.id, event_id: e3.id})
+Bookmark.create({user_id: u1.id, event_id: e5.id})
+Bookmark.create({user_id: u1.id, event_id: e7.id})
+Bookmark.create({user_id: u1.id, event_id: e10.id})
