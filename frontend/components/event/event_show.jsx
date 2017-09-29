@@ -28,6 +28,8 @@ class EventShow extends React.Component {
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+
+    this.toggleBookmark = this.toggleBookmark.bind(this);
   }
 
   componentDidMount() {
@@ -55,12 +57,27 @@ class EventShow extends React.Component {
     this.setState({ showModal: false });
   }
 
+  toggleBookmark() {
+    if (this.props.bookmarked) {
+      console.log("bookmarked so remove", this.props.hasBookmark);
+      this.props.removeBookmark(this.props.eventId);
+    } else {
+      console.log("no bookmark so create", this.props.hasBookmark);
+      this.props.createBookmark(this.props.eventId);
+    }
+  }
+
   render() {
-    const { event, errors, tickets, createRegistration } = this.props;
+    const {
+      event,
+      errors,
+      tickets,
+      createRegistration,
+      bookmarked
+    } = this.props;
 
     if (!event) {
       if (errors) {
-        console.log(errors);
         return (
           <div className="event-show-errors">
             {errors.map( (error, idx) => <li key={idx}>{error}</li>)}
@@ -95,8 +112,10 @@ class EventShow extends React.Component {
             <img src={event.image_url}/>
           </div>
           <EventDigest event={event} startDate={startDate}/>
-          <EventRegistration handleOpenModal={this.handleOpenModal}/>
-          <EventDescription description={event.description}/>
+          <EventRegistration handleOpenModal={this.handleOpenModal}
+            toggleBookmark={this.toggleBookmark}
+            bookmarked={bookmarked}/>
+          <EventDescription description={event.description} />
           <EventLocation location={event.location}
               startDate={startDate}
               endDate={endDate}

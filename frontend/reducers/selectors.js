@@ -41,3 +41,11 @@ export const selectTickets = (state, ticketsArray) => {
 export const selectRegistrations = (state) => (
   values(state.entities.registrations)
 );
+
+export const hasBookmark = (state, eventId) => {
+  if (state.session.currentUser) {
+    let bookmark = state.session.currentUser.bookmarkedEvents[eventId];
+    return Boolean(bookmark);
+  }
+  return false;
+};
