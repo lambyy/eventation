@@ -1,5 +1,5 @@
 import React from 'react';
-import EventIndexItem from '../event/event_index_item';
+import EventIndexItemContainer from '../event/event_index_item_container';
 
 class SavedEvents extends React.Component {
   constructor(props) {
@@ -7,14 +7,14 @@ class SavedEvents extends React.Component {
   }
 
   render() {
-    // const eventItems = this.props.events.map( event =>
-    //   <EventIndexItem key={event.id} event={event}/>
-    // );
+    const eventItems = this.props.events.map( event =>
+      <EventIndexItemContainer key={event.id} event={event}/>
+    );
 
+    console.log(this.props.events);
     return (
       <div className="saved-events">
-        Saved EVENTS
-        
+        {eventItems}
       </div>
     );
   }

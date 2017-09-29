@@ -8,7 +8,7 @@ class Api::EventsController < ApplicationController
     elsif params.include?(:organized)
       @events = Event.where(organizer_id: current_user.id)
     elsif params.include?(:bookmarks)
-      puts "bookmarks"
+      @events = current_user.bookmarked_events
     else
       @events = Event.all
     end

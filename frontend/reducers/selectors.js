@@ -6,9 +6,11 @@ export const selectAllEvents = state => (
 
 export const selectEvents = (state, type) => {
   const currentUser = state.session.currentUser;
+  const events = state.entities.events;
+
   if (type === "organized") {
     let organizedEvents = [];
-    values(state.entities.events).forEach( (event) => {
+    values(events).forEach( event => {
       if (event.organizer_id === currentUser.id) {
         organizedEvents.push(event);
       }
@@ -17,15 +19,21 @@ export const selectEvents = (state, type) => {
   } else if (type === "tickets") {
     let registeredEvents = [];
     const registrations = state.entities.registrations;
-    // const registrations = [...new Set(currentUser.registeredEvents)];
     values(registrations).forEach( registration => {
-      if (state.entities.events[registration.event_id]) {
-        registeredEvents.push(state.entities.events[registration.event_id]);
+      if (events[registration.event_id]) {
+        registeredEvents.push(events[registration.event_id]);
       }
     });
     return [...new Set(registeredEvents)];
+  } else if (type === "bookmarks") {
+    let savedEvents = [];
+    values(currentUser.bookmarkedEvents).forEach( eventId => {
+      if (events[eventId]) {
+        savedEvents.push(events[eventId]);
+      }
+    });
+    return savedEvents;
   }
-
 };
 
 export const selectTickets = (state, ticketsArray) => {

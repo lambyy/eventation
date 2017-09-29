@@ -30,7 +30,7 @@ class Profile extends React.Component {
         registrations={registrations}
         removeRegistration={removeRegistration}/>;
     } else if (type === "bookmarks") {
-      return <SavedEvents />;
+      return <SavedEvents events={events}/>;
     } else {
       return null;
     }
