@@ -1,5 +1,9 @@
 import { merge } from 'lodash';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import {
+  RECEIVE_BOOKMARK,
+  RECEIVE_REMOVE_BOOKMARK
+} from '../actions/bookmark_actions';
 
 const _nullUser = {
   currentUser: null
@@ -7,24 +11,35 @@ const _nullUser = {
 
 const SessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
-  let newState = merge({}, action.currentUser);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
+      let newState = merge({}, action.currentUser);
       if (action.currentUser !== null) {
-        newState.registeredEvents = action.currentUser.registrations.map(
-          registration => registration.event_id
-        );
+        newState.bookmarkedEvents = {};
+        action.currentUser.bookmarked_events.forEach(bookmarkedEvent => {
+          newState.bookmarkedEvents[bookmarkedEvent.id] = bookmarkedEvent.id;
+        });
+        delete newState.bookmarked_events;
         delete newState.registrations;
-        // newState.organized_events = action.currentUser.organized_events.map(
-        //   event => event.id
-        // );
         return { currentUser: newState };
       }
       return { currentUser: action.currentUser };
+    case RECEIVE_BOOKMARK:
+      newState = merge({}, state);
+      if (newState.currentUser !== null) {
+        newState.currentUser.bookmarkedEvents[action.bookmark.event_id] =
+          action.bookmark.event_id;
+      }
+      return newState;
+    case RECEIVE_REMOVE_BOOKMARK:
+      newState = merge({}, state);
+      if (newState.currentUser !== null) {
+        delete newState.currentUser.bookmarkedEvents[action.bookmark.event_id];
+      }
+      return newState;
     default:
       return state;
   }
 };
 
 export default SessionReducer;
-// remove comment
