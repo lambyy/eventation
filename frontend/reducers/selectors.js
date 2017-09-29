@@ -57,3 +57,27 @@ export const hasBookmark = (state, eventId) => {
   }
   return false;
 };
+
+export const filterEvents = (state, location) => {
+  if (location.search) {
+    let queries = location.search.slice(1).split("%");
+    queries = queries.map(query => query.split("="));
+
+    let filtered = [];
+    values(state.entities.events).forEach( event => {
+      if (queries.length === 2
+            && event.category === queries[0][1]
+              && event.event_type === queries[1][1]) {
+                filtered.push(event);
+      } else if (queries[0][0] === "category"
+                  && event.category === queries[0][1]) {
+                    filtered.push(event);
+      } else if (queries[0][0] === "event_type"
+                  && event.event_type === queries[0][1]) {
+                    filtered.push(event);
+      }
+    });
+    return filtered;
+  }
+  return [];
+};
