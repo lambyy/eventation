@@ -1,29 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import EventItemDigest from './event_index_item/event_item_digest';
 import EventItemExtra from './event_index_item/event_item_extra';
 
-const EventIndexItem = ({ event, bookmarked, createBookmark, removeBookmark }) => {
+class EventIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const toggleBookmark = () => {
-    if (bookmarked) {
-      removeBookmark(event.id);
+    this.toggleBookmark = this.toggleBookmark.bind(this);
+  }
+
+  toggleBookmark() {
+    const { event } = this.props;
+    if (this.props.currentUser) {
+      if (this.props.bookmarked) {
+        this.props.removeBookmark(event.id);
+      } else {
+        this.props.createBookmark(event.id);
+      }
     } else {
-      createBookmark(event.id);
+      this.props.history.push('/login');
     }
-  };
+  }
 
-  return (
-    <div className="event-index-item">
-      <Link to={`/events/${event.id}`} className="event-item-image">
-        <img src={event.image_url}/>
-      </Link>
-      <Link to={`/events/${event.id}`}>
-        <EventItemDigest event={event}/>
-      </Link>
-      <EventItemExtra bookmarked={bookmarked} toggleBookmark={toggleBookmark}/>
-    </div>
-  );
-};
+  render() {
+    const { event, bookmarked } = this.props;
 
-export default EventIndexItem;
+    return (
+      <div className="event-index-item">
+        <Link to={`/events/${event.id}`} className="event-item-image">
+          <img src={event.image_url}/>
+        </Link>
+        <Link to={`/events/${event.id}`}>
+          <EventItemDigest event={event}/>
+        </Link>
+        <EventItemExtra bookmarked={bookmarked} toggleBookmark={this.toggleBookmark}/>
+      </div>
+    );
+  }
+}
+
+export default withRouter(EventIndexItem);

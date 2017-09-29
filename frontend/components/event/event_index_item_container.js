@@ -7,6 +7,7 @@ import { hasBookmark } from '../../reducers/selectors';
 import EventIndexItem from './event_index_item';
 
 const mapStateToProps = (state, props) => ({
+  currentUser: state.session.currentUser,
   bookmarked: hasBookmark(state, props.event.id)
 });
 

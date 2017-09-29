@@ -58,10 +58,14 @@ class EventShow extends React.Component {
   }
 
   toggleBookmark() {
-    if (this.props.bookmarked) {
-      this.props.removeBookmark(this.props.eventId);
+    if (this.props.currentUser) {
+      if (this.props.bookmarked) {
+        this.props.removeBookmark(this.props.eventId);
+      } else {
+        this.props.createBookmark(this.props.eventId);
+      }
     } else {
-      this.props.createBookmark(this.props.eventId);
+      this.props.history.push('/login');
     }
   }
 
