@@ -7,5 +7,3 @@ end
 json.bookmarked_events do
   json.array! user.bookmarked_events, :id
 end
-
-# remove comment

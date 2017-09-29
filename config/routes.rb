@@ -9,5 +9,6 @@ Rails.application.routes.draw do
       resources :registrations, only: [:create]
     end
     resources :registrations, only: [:destroy]
+    resources :bookmarks, only: [:create, :destroy]
   end
 end
