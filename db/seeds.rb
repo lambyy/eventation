@@ -20,7 +20,7 @@ User.create({first_name: "Carmen", last_name:"To", email:"carmen@example.com", p
 
 e1 = Event.create({organizer_id: u1.id, title: "Chinese Lantern Festival", location: "New York State Fairgrounds",
 start_date: "2017-09-30T21:00", end_date: "2017-09-30T23:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301997/pexels-photo-431722_fd1vpv.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301997/seed%20photos/pexels-photo-431722_fd1vpv.jpg",
 description:"Come celebrate the arrival of spring at New York State's annual Chinese Lantern festival.
 Stroll down the streets of downtown and see the colorful, traditional Chinese lantern displays. Take part in creative courses to make your own lantern to display at home.
 See performances featuring Chinese acrobats, traditional lion and dragon dancers, and more during the evening show, (weather permitting).
@@ -33,7 +33,7 @@ Ticket.create({event_id: e1.id, name: "Regular", quantity: 200, price: 5})
 
 e2 = Event.create({organizer_id: u1.id, title: "ABC: Halloween Live Concert SF", location: "San Francisco",
 start_date: "2017-10-31T21:00", end_date: "2017-11-01T02:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301994/pexels-photo-196652_dfkf95.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506446267/seed%20photos/rchynp8rbnykr8arnuzv.jpg",
 description:"Live concert performance on Halloween by up&coming group ABC!
 Join us for the launch day of ABC's 2017 comeback nationwide tour. Tickets go on sale now! More details to come...
 Opening: Maroon Kitty
@@ -47,7 +47,7 @@ Ticket.create({event_id: e2.id, name: "FREE Before 11:00 with RSVP", quantity: 5
 
 e3 = Event.create({organizer_id: u2.id, title: "Japanese Tea Ceremony Class", location: "Toyko",
 start_date: "2017-10-25T10:00", end_date: "2017-10-25T14:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301999/pexels-photo-461428_x5sjyy.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301999/seed%20photos/pexels-photo-461428_x5sjyy.jpg",
 description:"Japanese Tea Ceremony Class.
  The Japanese tea ceremony is a cultural activity dating back to the 9th century. The tea ceremony, also called Chanoyu or Sado in Japanese, is way of preparing and presenting matcha, powdered green tea. It is one of the three classical Japanese arts of refinement.
  Join us for weekly classes in the Japanese traditional of Chanoyu. Enjoy excellent tea prepared by our resident sensei and learn to host your own tea ceremony
@@ -60,7 +60,7 @@ t1 = Ticket.create({event_id: e3.id, name: "Beginner", quantity: 20, price: 50})
 
 e4 = Event.create({organizer_id: u2.id, title: "First Class Cooking: Introductory Class", location: "Chicago",
 start_date: "2017-11-19T18:00", end_date: "2017-11-19T21:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302339/pexels-photo-129523_ecimym.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302339/seed%20photos/pexels-photo-129523_ecimym.jpg",
 description:"Learn to be a first class chef with this introductory class.
 Impress your family and friends with delicious and flavourful culinary dishes from around the world. Learn to present your food to appeal to the eyes and stomach of many.
 For a limited time, take the introductory lesson to our First Class Cooking course for free.",
@@ -72,7 +72,7 @@ t2 = Ticket.create({event_id: e4.id, name: "Introductory", quantity: 25, price: 
 
 e5 = Event.create({organizer_id: u3.id, title: "Color Me Wine", location: "New York",
 start_date: "2017-10-12T18:00", end_date: "2017-10-12T21:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301993/pexels-photo-66636_wom3s2.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301993/seed%20photos/pexels-photo-66636_wom3s2.jpg",
 description:"Color Me Wine.
 Do you like wine? Do you like art? Enjoy fancy wine and painting with your fellow wine and art lovers at our Wine Night Event!
 Learn to paint beautiful portraits during our three hour workshop where we will be reconstructing painting by famous wine lovers. We will teach you brush techniques, walk through painting step by step and all while enjoy fine wine from Napa Valley.
@@ -85,7 +85,7 @@ Ticket.create({event_id: e5.id, name: "Wine Night", quantity: 25, price: 60})
 
 e6 = Event.create({organizer_id: u3.id, title: "Innovative Business", location: "Seattle",
 start_date: "2017-11-02T07:00", end_date: "2017-11-04T17:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302039/business-innovation-money-icon-40218_ucuzcr.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302039/seed%20photos/business-innovation-money-icon-40218_ucuzcr.jpg",
 description:"Learn better business.
 How can your business become more successful? Join us for a three day convention exploring the modern business model and ways to be competitive in today's growing economy. Learn innovative techniques from leading industry speakers and participate in workshops to plan your business approach.
 Panelist including Bill Gates, Elon Musk, Sarah Monroe, and more!",
@@ -98,7 +98,7 @@ t4 = Ticket.create({event_id: e6.id, name: "Business", quantity: 2000, price: 10
 
 e7 = Event.create({organizer_id: u3.id, title: "Photography: 101", location: "Los Angeles",
 start_date: "2017-12-19T14:00", end_date: "2017-12-19T17:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301994/pexels-photo-297648_j98bwn.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301994/seed%20photos/pexels-photo-297648_j98bwn.jpg",
 description:"Want to take awesome photographs? Have a digit camera but don't know how to use it? Then this is the class for you!
 Become a better digital photograph during our three hour crash course. Learn the basic starting from exposure, aperture, ISO and shutter speed. Find out what all those knobs and dials on your DSLR do, what settings to use in any lighting condition and more.
 No prior experience or camera equipment needed to attend.",
@@ -110,7 +110,7 @@ Ticket.create({event_id: e7.id, name: "Basic Course", quantity: 30, price: 75})
 
 e8 = Event.create({organizer_id: u2.id, title: "Relaxation Sensation: Beginning Yoga", location: "San Francisco",
 start_date: "2017-10-11T14:00", end_date: "2017-10-11T16:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301997/pexels-photo-374632_o2srbi.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301997/seed%20photos/pexels-photo-374632_o2srbi.jpg",
 description:"Stressed? Come check out Relaxation Sensation's beginning yoga course.
 Relaxation Sensation is the premiere yogo studio in the San Francisco Bay Area with top yoga instructors from around the globe and top of the line facility and equipment. Our mission is to bring peace and personal growth to every student through our highest quality yoga programs for people of all ages.
 For a limit time, try the first course for free.
@@ -123,7 +123,7 @@ Ticket.create({event_id: e8.id, name: "First Course Only", quantity: 100, price:
 
 e9 = Event.create({organizer_id: u4.id, title: "2018 NYE Extravaganza", location: "Las Vegas",
 start_date: "2017-12-31T21:00", end_date: "201-01-01T02:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301993/lights-party-dancing-music_mzf7nv.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506301993/seed%20photos/lights-party-dancing-music_mzf7nv.jpg",
 description:"2018 New Years Eve Extravaganza! Come celebrate the coming of the new year with the best of the best!
 Lineup: DJ Catz, Huski3sInTheHouse, UnicornAreReal and more!
 Sound by: TopOfTheLine
@@ -136,7 +136,7 @@ t5 = Ticket.create({event_id: e9.id, name: "FREE Before 11:00 PM with RSVP", qua
 
 e10 = Event.create({organizer_id: u2.id, title: "Kathlene & Trevor's Wedding", location: "Orange County",
 start_date: "2018-07-26T14:00", end_date: "2017-07-26T20:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506309662/lwift8rihzvot9b8fcnq.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506646686/seed%20photos/q2tocszezyusgsnsmsp2.jpg",
 description:"Friends and family, we're getting married!
 Thank you all for the love and support you've given us all these years. It has been a long engagement, but we have finally set a date! Please join us on July 26th, 2018 at Arlington House, Orange County to celebrate our union.
 Doors open at 1:30 PM, ceremony begins at 2:00 PM.
@@ -152,7 +152,7 @@ Ticket.create({event_id: e10.id, name: "RSVP", quantity: 200, price: 0})
 
 e11 = Event.create({organizer_id: u5.id, title: "2018 Nike Women's Marathon", location: "San Francisco",
 start_date: "2018-01-11T07:00", end_date: "2018-10-11T16:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302039/relay-race-competition-stadium-sport_ulsmjq.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302039/seed%20photos/relay-race-competition-stadium-sport_ulsmjq.jpg",
 description:"Join us this year for Nike's annual Women's Marathon!
 Unite for the world's largest women's marathon series! Show your passion and release your inner athlete at the annual race held in San Francisco, featuring exclusive Nike race gear and equipment.
 
@@ -170,7 +170,7 @@ Ticket.create({event_id: e11.id, name: "Public", quantity: 300, price: 80})
 #
 e12 = Event.create({organizer_id: u5.id, title: "Nintendo Expo 2018", location: "San Diego",
 start_date: "2018-03-11T07:00", end_date: "2017-03-14T17:00",
-image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302338/pexels-photo-442576_tgfytz.jpg",
+image_url: "http://res.cloudinary.com/drdaiyfdt/image/upload/v1506302338/seed%20photos/pexels-photo-442576_tgfytz.jpg",
 description:"Nintendo Expo 2018
 Check out the newest games from Nintendo. Get the first look at Nintendo's new 4DSLite scheduled to be released this summer!
 Featuring new games from our most beloved franchises like Super Mario Bros, Pokemon and Legend of Zelda!
