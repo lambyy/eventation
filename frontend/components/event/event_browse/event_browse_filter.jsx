@@ -9,13 +9,13 @@ const _eventTypes = _eventTypeList.split(" ");
 const EventBrowseFilter = ({ state, updateQuery }) => {
   const categoryFilter = _categories.map( (category, idx) => (
     <li key={`category-${idx}`}
-        className={(state.category === category) ? "query" : ""}
+        className={(state.category === category) ? "query" : "none"}
         onClick={updateQuery("category")}>{category}</li>
   ));
 
   const eventTypeFilter = _eventTypes.map( (eventType, idx) => (
     <li key={`event-type-${idx}`}
-        className={(state.event_type === eventType) ? "query" : ""}
+        className={(state.event_type === eventType) ? "query" : "none"}
         onClick={updateQuery("event_type")}>{eventType}</li>
   ));
 

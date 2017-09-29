@@ -69,14 +69,17 @@ export const filterEvents = (state, location) => {
             && event.category === queries[0][1]
               && event.event_type === queries[1][1]) {
                 filtered.push(event);
-      } else if (queries[0][0] === "category"
-                  && event.category === queries[0][1]) {
-                    filtered.push(event);
-      } else if (queries[0][0] === "event_type"
-                  && event.event_type === queries[0][1]) {
-                    filtered.push(event);
+      } else if (queries.length === 1) {
+        if (queries[0][0] === "category"
+                    && event.category === queries[0][1]) {
+                      filtered.push(event);
+        } else if (queries[0][0] === "event_type"
+                    && event.event_type === queries[0][1]) {
+                      filtered.push(event);
+        }
       }
     });
+    console.log(filtered);
     return filtered;
   }
   return values(state.entities.events);

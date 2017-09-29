@@ -21,13 +21,14 @@ class EventBrowse extends React.Component {
   updateQuery(type) {
     return (e) => {
       e.preventDefault();
-      if (type === "category" && this.state.category === e.target.textContent) {
-        e.target.textContent = "";
-      } else if (type === "event_type" && this.state.event_type === e.target.textContent) {
-        e.target.textContent = "";
+      let textContent = e.target.textContent;
+      if (type === "category" && this.state.category === textContent) {
+        textContent = "";
+      } else if (type === "event_type" && this.state.event_type === textContent) {
+        textContent = "";
       }
 
-      this.setState({ [type]: e.target.textContent }, () => {
+      this.setState({ [type]: textContent }, () => {
         const { category, event_type } = this.state;
         const categoryQuery = (category) ? `category=${category}` : '';
         const eventTypeQuery = (event_type) ? `event_type=${event_type}` : '';
@@ -41,13 +42,13 @@ class EventBrowse extends React.Component {
         }
 
         this.props.history.push(`/events/browse${queryStr}`);
-        // this.props.requestAllEvents({ query: this.state });
+        this.props.requestAllEvents({ query: this.state });
       });
     };
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props.events);
     return (
       <div className="event-browse">
         <EventBrowseFilter
