@@ -59,10 +59,8 @@ class EventShow extends React.Component {
 
   toggleBookmark() {
     if (this.props.bookmarked) {
-      console.log("bookmarked so remove", this.props.hasBookmark);
       this.props.removeBookmark(this.props.eventId);
     } else {
-      console.log("no bookmark so create", this.props.hasBookmark);
       this.props.createBookmark(this.props.eventId);
     }
   }

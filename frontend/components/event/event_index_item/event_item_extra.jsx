@@ -1,9 +1,10 @@
 import React from 'react';
+import Bookmark from '../../bookmark/bookmark';
 
-const EventItemExtra = () => {
+const EventItemExtra = ({ bookmarked, toggleBookmark }) => {
   return (
     <div className="event-item-extras">
-      <i className="fa fa-bookmark-o" aria-hidden="true"></i>
+      <Bookmark bookmarked={bookmarked} toggleBookmark={toggleBookmark}/>
     </div>
   );
 };

@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-// import { requestAllEvents } from '../../actions/event_actions';
+import {
+  createBookmark,
+  removeBookmark
+} from '../../actions/bookmark_actions';
 import { hasBookmark } from '../../reducers/selectors';
 import EventIndexItem from './event_index_item';
 
@@ -8,7 +11,8 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  createBookmark: (eventId) => dispatch(createBookmark(eventId)),
+  removeBookmark: (eventId) => dispatch(removeBookmark(eventId))
 });
 
 export default connect(
