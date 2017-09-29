@@ -78,7 +78,7 @@ class EventBrowse extends React.Component {
           updateQuery={this.updateQuery}
           state={this.state}/>
         <div className="browse-index">
-          <div>Filter Events by: <h3>{filterStr}</h3></div>
+          <div className="header">Filter Events by: <h3>{filterStr}</h3></div>
           {this.renderEvents()}
         </div>
 
