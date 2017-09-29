@@ -79,5 +79,5 @@ export const filterEvents = (state, location) => {
     });
     return filtered;
   }
-  return [];
+  return values(state.entities.events);
 };
