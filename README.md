@@ -1,24 +1,22 @@
-# README
+# Eventation
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Live](https://eventation.herokuapp.com/)
 
-Things you may want to cover:
+Eventation is a single-page Eventbrite clone built using Ruby on Rails, React/Redux and Postgresql. The web application allows users to browse through various events. Upon sign in, users can also create and delete their own events, bookmark interesting events, and register tickets for events.
 
-* Ruby version
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/dashboard.png)
 
-* System dependencies
+## Features
 
-* Configuration
+### Events
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/event_form.png)
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/event_show.png)
 
-* Database creation
+### Tickets/Registrations
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/registration.png)
 
-* Database initialization
+### Event Categories
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/event_browse.png)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Bookmarks
+![](https://github.com/lambyy/eventation/blob/master/app/assets/images/bookmarks.png)
