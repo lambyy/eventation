@@ -1,6 +1,6 @@
-$image-height: 350px;
+$image-height: 60vh;
 $image-width: 70%;
-$register-height: 50px;
+$register-height: 5vh;
 $event-show-border-radius: 4px;
 $description-padding: 35px;
 
@@ -12,7 +12,7 @@ $description-padding: 35px;
   .event-backdrop {
     position: absolute;
     width: 100vw;
-    height: $image-height + $register-height + 20px;
+    height: $image-height + $register-height + 2vh;
     overflow: hidden;
 
     > img {
