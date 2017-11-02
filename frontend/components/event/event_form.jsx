@@ -99,7 +99,8 @@ class EventForm extends React.Component {
     };
   }
 
-  addTicket() {
+  addTicket(e) {
+    e.preventDefault();
     let tickets = this.state.tickets.slice();
     tickets[this.state.num_tickets] =
       merge({}, {name: "", quantity: "", price: ""});

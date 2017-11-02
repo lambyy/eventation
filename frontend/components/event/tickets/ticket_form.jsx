@@ -3,6 +3,15 @@ import React from 'react';
 class TicketForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.trashTicket = this.trashTicket.bind(this);
+  }
+
+  trashTicket(idx) {
+    return (e) => {
+      e.preventDefault();
+      this.props.deleteTicket(idx);
+    };
   }
 
   render() {
@@ -27,7 +36,7 @@ class TicketForm extends React.Component {
           onChange={updateTicket("price", idx)}
           placeholder="Price"/>
         <button className="fa fa-trash"
-          onClick={() => deleteTicket(idx)}></button>
+          onClick={this.trashTicket(idx)}></button>
       </div>
     );
   }

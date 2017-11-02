@@ -37,69 +37,59 @@ class DetailForm extends React.Component {
 
     return (
       <div className="detail-form">
-        <label>
-          EVENT TITLE
-          <br/>
-          <input type="text" value={title}
-              onChange={update("title")}
-              placeholder="Give it a short distinct name"/>
-        </label>
+        <label>EVENT TITLE</label>
         <br/>
-        <label>
-          LOCATION
-          <br/>
-          <input type="text" value={location}
-              onChange={update("location")}
-              placeholder="Specify where event will be"/>
-        </label>
+        <input type="text" value={title}
+               onChange={update("title")}
+               placeholder="Give it a short distinct name"
+        />
+        <br/>
+        <label>LOCATION</label>
+        <br/>
+        <input type="text" value={location}
+               onChange={update("location")}
+               placeholder="Specify where event will be"/>
 
-          <div className="event-time">
-            <label>
-              STARTS
-              <br/>
-              <input type="datetime-local" value={start_date.slice(0, 16)}
-                onChange={update("start_date")}/>
-            </label>
-            <br/>
-            <label>
-              ENDS
-              <br/>
-              <input type="datetime-local" value={end_date.slice(0, 16)}
-                onChange={update("end_date")}/>
-            </label>
-          </div>
+        <div className="event-time">
+          <label>STARTS</label>
+          <label>ENDS</label>
 
-        <label>
-          EVENT IMAGE
-          <br/>
-          <EventImageUpload updateImageURL={updateImageURL}
-              imageUrl={image_url} />
-        </label>
+          <input type="datetime-local"
+                 value={start_date.slice(0, 16)}
+                 onChange={update("start_date")}/>
+
+
+          <input type="datetime-local"
+                 value={end_date.slice(0, 16)}
+                 onChange={update("end_date")}/>
+        </div>
+
+        <label>EVENT IMAGE</label>
         <br/>
-        <label>
-          EVENT DESCRIPTION
-          <br/>
-          <textarea value={description}
-              onChange={update("description")}></textarea>
-        </label>
+        <EventImageUpload
+          updateImageURL={updateImageURL}
+          imageUrl={image_url}
+        />
         <br/>
-        <label>
-          EVENT TYPE
-          <br/>
-          <select value={event_type} onChange={update("event_type")}>
-            <option value="1" disabled>Select the type of event</option>
-            {this.renderEventTypeOptions()}
-          </select>
-        </label>
+        <label>EVENT DESCRIPTION</label>
         <br/>
-        <label>
-          EVENT TOPIC
-          <br/>
-          <select value={category} onChange={update("category")}>
-            <option value="1" disabled>Select a topic</option>
-            {this.renderCategoryOptions()}
-          </select>
-        </label>
+        <textarea value={description}
+                  onChange={update("description")}></textarea>
+        <br/>
+        <label>EVENT TYPE</label>
+        <br/>
+        <select value={event_type} onChange={update("event_type")}>
+          <option value="1" disabled>Select the type of event</option>
+          {this.renderEventTypeOptions()}
+        </select>
+
+        <br/>
+        <label>EVENT TOPIC</label>
+        <br/>
+        <select value={category} onChange={update("category")}>
+          <option value="1" disabled>Select a topic</option>
+          {this.renderCategoryOptions()}
+        </select>
       </div>
     );
   }
