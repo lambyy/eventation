@@ -75,6 +75,10 @@ button:focus, input[type="submit"]:focus {
 	outline: 0;
 }
 
+input, textarea {
+	cursor: text;
+}
+
 .clickable {
 	cursor: pointer;
 }
