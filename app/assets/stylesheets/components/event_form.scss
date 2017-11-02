@@ -127,8 +127,9 @@ $event-form-side-margin: 15%;
 }
 
 .event-time {
+  width: 60%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 50% 50%;
 
   label {
     width: 30%;
