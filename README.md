@@ -61,11 +61,67 @@ Once an event is created, their details can be viewed on the Event Show page.
 
 On the Event Show page of each Event, users are able to register for Tickets. Once registered, users can see their registered events and tickets on their profile page. They also have the option to return tickets from their profile page.
 
+`````
+const RegistrationForm = (props) => {
+
+  const renderTickets = () => {
+    const tickets = props.tickets.map( (ticket, idx) => (
+      <Ticket key={idx}
+        ticket={ticket}
+        eventTitle={props.eventTitle}
+        closeTicketModal={props.handleCloseModal}
+        createRegistration={props.createRegistration}/>
+    ));
+
+    return tickets;
+  };
+
+  return (
+    <div className="registration-form">
+      <button className="fa fa-times-circle-o" onClick={props.handleCloseModal}></button>
+      <h3>Register</h3>
+      {renderTickets()}
+    </div>
+  );
+};
+
+export default RegistrationForm;
+`````
+
 ![](https://github.com/lambyy/eventation/blob/master/app/assets/images/registration.png)
 
 ### Event Categories
 
 Events can be filtered by their categories and event types when browsing, allowing users to easily find events they are interested in.
+
+`````
+export const filterEvents = (state, location) => {
+  if (location.search) {
+    let queries = location.search.slice(1).split("%");
+    queries = queries.map(query => query.split("="));
+
+    let filtered = [];
+    values(state.entities.events).forEach( event => {
+      if (queries.length === 2
+            && event.category === queries[0][1]
+              && event.event_type === queries[1][1]) {
+                filtered.push(event);
+      } else if (queries.length === 1) {
+        if (queries[0][0] === "category"
+                    && event.category === queries[0][1]) {
+                      filtered.push(event);
+        } else if (queries[0][0] === "event_type"
+                    && event.event_type === queries[0][1]) {
+                      filtered.push(event);
+        }
+      }
+    });
+
+    return filtered;
+  }
+  return values(state.entities.events);
+};
+`````
 
 ![](https://github.com/lambyy/eventation/blob/master/app/assets/images/event_browse.png)
 
