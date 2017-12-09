@@ -16,6 +16,41 @@ Users can create custom events with their desired event image, location, date an
 
 One of the biggest hurdles when implementing the event form was the creation of an event in conjunction with tickets as these are two separate tables in the Rails backend. I was able to implement this by creating Ticket components on the frontend to store individual ticket information in an array in the local state of the Event Form component. When an event is created, all the event and ticket information is sent to the backend as one package. I created a method for Events to first check if all the information sent will create valid Event and Ticket models. If valid, the method will create the Event and all its associated Tickets. I also wrote a similar method to update an exisiting Event and create or destroy its associated Tickets to reflect the data sent by the Event Form.
 
+`````
+class Tickets < ApplicationRecord
+  def self.check_tickets(params)
+    ticket_errors = []
+    tickets_params = params.select { |k, _| k == "tickets" }
+    tickets_params[:tickets].each do |_, ticket_params|
+      t = Ticket.new(ticket_params)
+      unless t.valid?
+        ticket_errors += t.errors.full_messages
+      end
+    end
+    ticket_errors
+  end
+end
+
+class Event < ApplicationRecord
+  def self.create_event_with_tickets(params, current_user)
+    event_params = params.reject { |k, _| k == "tickets" }
+    tickets_params = params.select { |k, _| k == "tickets" }
+    event = Event.new(event_params)
+    event.organizer_id = current_user.id
+
+    if event.save
+      tickets_params[:tickets].each do |_, ticket_params|
+        ticket_params[:event_id] = event.id
+        Ticket.create(ticket_params)
+      end
+      event
+    else
+      event.errors.full_messages
+    end
+  end
+end
+`````
+
 ![](https://github.com/lambyy/eventation/blob/master/app/assets/images/create_tickets.png)
 
 Once an event is created, their details can be viewed on the Event Show page.
